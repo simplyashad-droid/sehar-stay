@@ -32,16 +32,16 @@ export default function SeharStayPage() {
             ☰
           </button>
 
-          <nav className="hidden md:flex gap-6">
-            <Link href="/sehar-stay">Home</Link>
-            <a href="#contact">Contact</a>
+          <nav className="hidden md:flex gap-6 text-foreground">
+            <Link href="/sehar-stay" className="hover:opacity-70 transition">Home</Link>
+            <a href="#contact" className="hover:opacity-70 transition">Contact</a>
           </nav>
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden px-4 pb-4 space-y-2">
-            <Link href="/sehar-stay">Home</Link>
-            <a href="#contact">Contact</a>
+          <div className="md:hidden px-4 pb-4 space-y-2 text-foreground">
+            <Link href="/sehar-stay" className="block hover:opacity-70 transition">Home</Link>
+            <a href="#contact" className="block hover:opacity-70 transition">Contact</a>
           </div>
         )}
       </header>
