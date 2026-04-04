@@ -21,7 +21,7 @@ export default function SeharStayPage() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           
-          <Link href="/" className="text-2xl font-serif font-bold">
+          <Link href="/sehar-stay" className="text-2xl font-serif font-bold">
             SEHAR
           </Link>
 
@@ -33,17 +33,15 @@ export default function SeharStayPage() {
           </button>
 
           <nav className="hidden md:flex gap-6">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="#contact">Contact</Link>
+            <Link href="/sehar-stay">Home</Link>
+            <a href="#contact">Contact</a>
           </nav>
         </div>
 
         {isMobileMenuOpen && (
           <div className="md:hidden px-4 pb-4 space-y-2">
-            <Link href="/">Home</Link>
-            <Link href="/about">About</Link>
-            <Link href="#contact">Contact</Link>
+            <Link href="/sehar-stay">Home</Link>
+            <a href="#contact">Contact</a>
           </div>
         )}
       </header>
