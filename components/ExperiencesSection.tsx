@@ -14,37 +14,37 @@ const experiences: readonly Experience[] = [
     id: "yoga",
     title: "Sacred Yoga",
     description: "Connect with your inner self through curated yoga sessions",
-    image: "/placeholder.svg?height=700&width=700",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Crect fill='%23e8c4d4' width='700' height='700'/%3E%3Ccircle cx='350' cy='350' r='200' fill='%23d4a5bf'/%3E%3Crect fill='%23c987a5' x='200' y='200' width='300' height='300'/%3E%3C/svg%3E",
   },
   {
     id: "breathwork",
     title: "Breathwork",
     description: "Harness the power of breath for deeper healing",
-    image: "/placeholder.svg?height=700&width=700",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Crect fill='%23d4e8c4' width='700' height='700'/%3E%3Ccircle cx='350' cy='350' r='200' fill='%23a5d487'/%3E%3Crect fill='%238bc968' x='200' y='200' width='300' height='300'/%3E%3C/svg%3E",
   },
   {
     id: "sound-bath",
     title: "Sound Bath",
     description: "Immerse yourself in healing frequencies and vibrations",
-    image: "/placeholder.svg?height=700&width=700",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Crect fill='%23c4d4e8' width='700' height='700'/%3E%3Ccircle cx='350' cy='350' r='200' fill='%2387a5d4'/%3E%3Crect fill='%236887c9' x='200' y='200' width='300' height='300'/%3E%3C/svg%3E",
   },
   {
     id: "art-therapy",
     title: "Art Therapy",
     description: "Express your creativity through guided art sessions",
-    image: "/placeholder.svg?height=700&width=700",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Crect fill='%23e8d4c4' width='700' height='700'/%3E%3Ccircle cx='350' cy='350' r='200' fill='%23d4a587'/%3E%3Crect fill='%23c98768' x='200' y='200' width='300' height='300'/%3E%3C/svg%3E",
   },
   {
     id: "culinary",
     title: "Culinary Experience",
     description: "Learn traditional cooking techniques from local experts",
-    image: "/placeholder.svg?height=700&width=700",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='700' height='700'%3E%3Crect fill='%23e8e4c4' width='700' height='700'/%3E%3Ccircle cx='350' cy='350' r='200' fill='%23d4c487'/%3E%3Crect fill='%23c9b068' x='200' y='200' width='300' height='300'/%3E%3C/svg%3E",
   },
 ]
 
 export default function ExperiencesSection() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-slate-50">
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-primary/10 via-background to-background">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">

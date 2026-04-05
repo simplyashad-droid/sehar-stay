@@ -13,14 +13,14 @@ interface Room {
 const rooms: readonly Room[] = [
   {
     id: "shambala",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23e8d5c4' width='600' height='600'/%3E%3Crect fill='%23d4a574' x='100' y='100' width='400' height='400'/%3E%3Ccircle cx='300' cy='300' r='150' fill='%23c9945d'/%3E%3C/svg%3E",
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
   },
   {
     id: "nerika",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23d4e8d5' width='600' height='600'/%3E%3Crect fill='%23a5d4a5' x='100' y='100' width='400' height='400'/%3E%3Ccircle cx='300' cy='300' r='150' fill='%238bc98b'/%3E%3C/svg%3E",
     category: "SEHAR GREEN ROOM",
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
@@ -28,28 +28,28 @@ const rooms: readonly Room[] = [
   },
   {
     id: "family-hub",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23e8d4d4' width='600' height='600'/%3E%3Crect fill='%23d4a5a5' x='100' y='100' width='400' height='400'/%3E%3Ccircle cx='300' cy='300' r='150' fill='%23c98b8b'/%3E%3C/svg%3E",
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
   },
   {
     id: "escape",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23d4d4e8' width='600' height='600'/%3E%3Crect fill='%23a5a5d4' x='100' y='100' width='400' height='400'/%3E%3Ccircle cx='300' cy='300' r='150' fill='%238b8bc9'/%3E%3C/svg%3E",
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
   },
   {
     id: "sacred-space",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23e8e0d4' width='600' height='600'/%3E%3Crect fill='%23d4c4a5' x='100' y='100' width='400' height='400'/%3E%3Ccircle cx='300' cy='300' r='150' fill='%23c9b08b'/%3E%3C/svg%3E",
     category: "SEHAR SACRED SPACE",
     description: "HEALING ROOM - BREATH & SILENCE",
     roomName: "Sacred Space",
   },
   {
     id: "nazar",
-    image: "/placeholder.svg?height=600&width=600",
+    image: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Crect fill='%23d8e8d4' width='600' height='600'/%3E%3Crect fill='%23b8d4a5' x='100' y='100' width='400' height='400'/%3E%3Ccircle cx='300' cy='300' r='150' fill='%2399c98b'/%3E%3C/svg%3E",
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
@@ -58,7 +58,7 @@ const rooms: readonly Room[] = [
 
 export default function RoomsSection() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-background">
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-primary/5">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
