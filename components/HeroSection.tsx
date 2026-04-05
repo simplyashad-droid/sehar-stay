@@ -19,23 +19,30 @@ const HeroSection: FC = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
       </div>
 
-      {/* Right-Aligned Content */}
-      <div className="relative z-10 flex flex-col justify-start pt-20 md:pt-32 pr-6 md:pr-16 lg:pr-32 ml-auto max-w-2xl">
+      {/* Right-Aligned Content Container */}
+      <div className="relative z-10 w-full h-full flex items-start justify-end pt-20 md:pt-32">
         
-        <p className="font-serif text-foreground/80 text-sm md:text-base mb-2 tracking-wide">
-          Your dream stay in a
-        </p>
+        <div className="flex flex-col pr-6 md:pr-16 lg:pr-24 max-w-xl">
+          
+          <p className="font-serif text-foreground text-sm md:text-base mb-3 tracking-wide font-light">
+            Your dream stay in a
+          </p>
 
-        <h2 className="font-serif text-primary text-5xl md:text-6xl lg:text-7xl font-bold mb-8 italic leading-tight">
-          Himalayan Cottage
-        </h2>
+          <h2 className="font-serif text-primary text-5xl md:text-6xl lg:text-7xl font-bold mb-8 italic leading-tight">
+            Himalayan Cottage
+          </h2>
 
-        <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.2em] font-light mb-2">
-          SEHAR BOUTIQUE
-        </p>
-        <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.2em] font-light">
-          STAY & GALLERY
-        </p>
+          <div className="space-y-1">
+            <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.15em] font-light">
+              SEHAR BOUTIQUE
+            </p>
+            <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.15em] font-light">
+              STAY & GALLERY
+            </p>
+          </div>
+
+        </div>
+
       </div>
 
       {/* Bottom CTA Section */}
