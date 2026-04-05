@@ -19,7 +19,7 @@ const SeharStayPage: FC = () => {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-200 via-orange-100 to-transparent backdrop-blur-sm">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-200 via-orange-100 to-transparent">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           
           <Link href="/sehar-stay" className="flex-shrink-0">
