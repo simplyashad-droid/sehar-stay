@@ -81,86 +81,94 @@ const ExperiencesSection: FC = () => {
   }
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-[#df6327]/10 via-background to-background">
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-[#df6327]">
       <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Bringing Magic to Your Life</h2>
-          <p className="text-foreground/70 font-sans text-lg md:text-xl">Discover the enchanting experiences that await you</p>
-        </div>
-
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Carousel */}
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{
-                transform: `translateX(-${currentIndex * (100 / itemsPerView)}%)`,
-              }}
-            >
-              {experiences.map((experience) => (
-                <div
-                  key={experience.id}
-                  className="min-w-[33.333%] px-4"
-                >
-                  <div className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-96 hover:-translate-y-2 ring-2 ring-[#df6327]/0 hover:ring-[#df6327]">
-                    {/* Background Image */}
-                    <img
-                      src={experience.image}
-                      alt={experience.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-
-                    {/* Enhanced Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 opacity-100 group-hover:opacity-95 transition-opacity" />
-
-                    {/* Orange accent bar */}
-                    <div className="absolute top-0 left-0 w-1 h-12 bg-[#df6327] transform -translate-x-1 group-hover:translate-x-0 transition-transform duration-300" />
-
-                    {/* Content */}
-                    <div className="absolute inset-0 flex flex-col justify-end p-6">
-                      <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#df6327] transition-colors duration-300">{experience.title}</h3>
-                      <p className="font-sans text-xs md:text-sm text-white/90 leading-relaxed group-hover:text-white/95 transition-colors">{experience.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
+          {/* Left Content */}
+          <div className="flex-1 text-white space-y-6">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold">
+              Bringing <span className="text-blue-600 italic">Magic</span> to your life
+            </h2>
+            
+            <blockquote className="text-lg md:text-xl font-sans leading-relaxed">
+              "LIFE IS TOO MAGICAL NOT TO BE ENCHANTED BY IT"
+            </blockquote>
+            
+            <p className="text-white/90 font-sans">
+              ~ Sehar family
+            </p>
+            
+            <p className="text-base md:text-lg font-sans leading-relaxed text-white/95">
+              We can't stop raving about the magic of our house of Bliss. The only way to fully experience its magic is to spend a few days with us.
+            </p>
           </div>
 
-          {/* Navigation Buttons */}
-          <button
-            onClick={goPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 p-3 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-10"
-            aria-label="Previous experiences"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            onClick={goToNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 p-3 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-10"
-            aria-label="Next experiences"
-          >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
+          {/* Right Carousel */}
+          <div className="flex-1 w-full">
+            <div className="relative bg-white/20 backdrop-blur-sm rounded-3xl p-6 shadow-2xl">
+              {/* Carousel Container */}
+              <div className="relative">
+                {/* Carousel */}
+                <div className="overflow-hidden rounded-2xl bg-white/30">
+                  <div
+                    className="flex transition-transform duration-500 ease-out"
+                    style={{
+                      transform: `translateX(-${currentIndex * 100}%)`,
+                    }}
+                  >
+                    {experiences.map((experience) => (
+                      <div
+                        key={experience.id}
+                        className="w-full flex-shrink-0"
+                      >
+                        <div className="relative h-80 overflow-hidden">
+                          {/* Background Image */}
+                          <img
+                            src={experience.image}
+                            alt={experience.title}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-          {/* Indicator Dots */}
-          <div className="flex justify-center gap-2 mt-8">
-            {Array.from({ length: Math.ceil(experiences.length - itemsPerView + 1) }).map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`h-2 rounded-full transition-all ${
-                  index === currentIndex ? 'w-8 bg-[#df6327]' : 'w-2 bg-gray-400'
-                }`}
-                aria-label={`Go to slide ${index + 1}`}
-              />
-            ))}
+                {/* Navigation Buttons */}
+                <button
+                  onClick={goPrev}
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-10 shadow-lg"
+                  aria-label="Previous experiences"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-10 shadow-lg"
+                  aria-label="Next experiences"
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Indicator Dots */}
+              <div className="flex justify-center gap-2 mt-6">
+                {experiences.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentIndex(index)}
+                    className={`h-2 rounded-full transition-all ${
+                      index === currentIndex ? 'w-8 bg-[#df6327]' : 'w-2 bg-gray-400'
+                    }`}
+                    aria-label={`Go to slide ${index + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
