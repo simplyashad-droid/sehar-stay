@@ -6,37 +6,37 @@ const HeroSection: FC = () => {
   return (
     <section className="relative w-full h-screen flex flex-col overflow-hidden">
       
-      {/* Background Image */}
+      {/* Background Image - Extended Sky */}
       <div
-        className="absolute inset-0 z-0 bg-cover bg-center"
+        className="absolute inset-0 z-0 bg-cover"
         style={{
           backgroundImage: "url('/sehar-cottage.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "top center",
           backgroundAttachment: "fixed",
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
       </div>
 
-      {/* Right-Aligned Content Container */}
-      <div className="relative z-10 w-full h-full flex items-start justify-end pt-20 md:pt-32">
+      {/* Right-Aligned Content Container - Positioned in Sky */}
+      <div className="relative z-10 w-full flex items-start justify-end pt-8 md:pt-12 lg:pt-16">
         
-        <div className="flex flex-col pr-6 md:pr-16 lg:pr-24 max-w-xl">
+        <div className="flex flex-col pr-6 md:pr-12 lg:pr-20 max-w-md">
           
-          <p className="font-serif text-foreground text-sm md:text-base mb-3 tracking-wide font-light">
+          <p className="font-serif text-foreground/80 text-xs md:text-sm mb-1 tracking-wide font-light">
             Your dream stay in a
           </p>
 
-          <h2 className="font-serif text-[#df6327] text-5xl md:text-6xl lg:text-7xl font-bold mb-8 italic leading-tight">
+          <h2 className="font-serif text-[#df6327] text-2xl md:text-4xl lg:text-5xl font-bold mb-3 italic leading-tight">
             Himalayan Cottage
           </h2>
 
-          <div className="space-y-1">
-            <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.15em] font-light">
+          <div className="space-y-0.5">
+            <p className="font-sans text-foreground/70 text-[10px] md:text-xs tracking-[0.1em] font-light">
               SEHAR BOUTIQUE
             </p>
-            <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.15em] font-light">
+            <p className="font-sans text-foreground/70 text-[10px] md:text-xs tracking-[0.1em] font-light">
               STAY & GALLERY
             </p>
           </div>
