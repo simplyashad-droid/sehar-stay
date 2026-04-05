@@ -27,11 +27,11 @@ a:visited {
   color: inherit;
 }
 
-/* Scroll Animation Styles */
+/* Subtle scroll animations - always visible, with smooth entrance */
 @keyframes fadeInUp {
   from {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 0.7;
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -39,56 +39,6 @@ a:visited {
   }
 }
 
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Default animation state */
 .animate-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.6s ease-out;
-}
-
-.animate-on-scroll.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.animate-on-scroll.animate-in.slide-left {
-  animation: slideInLeft 0.6s ease-out forwards;
-}
-
-.animate-on-scroll.animate-in.slide-right {
-  animation: slideInRight 0.6s ease-out forwards;
+  animation: fadeInUp 0.7s ease-out 0.15s both;
 }

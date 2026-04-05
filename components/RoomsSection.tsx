@@ -4,7 +4,6 @@ import type React from 'react'
 import { useState, type FC } from 'react'
 import Image from 'next/image'
 import RoomBookingModal from './RoomBookingModal'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface Room {
   id: string

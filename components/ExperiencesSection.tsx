@@ -2,7 +2,6 @@
 
 import type { FC } from 'react'
 import { useState } from 'react'
-import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface Experience {
   id: string
@@ -78,8 +77,6 @@ const ExperiencesSection: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const itemsPerView = 3
   const maxIndex = Math.ceil(experiences.length - itemsPerView)
-  const contentRef = useScrollAnimation()
-  const carouselRef = useScrollAnimation()
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
@@ -94,7 +91,7 @@ const ExperiencesSection: FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div ref={contentRef as React.RefObject<HTMLDivElement>} className="flex-1 text-white space-y-6 animate-on-scroll">
+          <div className="flex-1 text-white space-y-6 animate-on-scroll">
             <h2 className="font-serif text-4xl md:text-5xl font-bold">
               Bringing <span className="text-blue-600 italic">Magic</span> to your life
             </h2>
@@ -113,7 +110,7 @@ const ExperiencesSection: FC = () => {
           </div>
 
           {/* Right Carousel */}
-          <div ref={carouselRef as React.RefObject<HTMLDivElement>} className="flex-1 w-full animate-on-scroll">
+          <div className="flex-1 w-full animate-on-scroll">
             <div className="relative group">
               {/* Carousel Card */}
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
