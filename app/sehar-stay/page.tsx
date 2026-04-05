@@ -26,9 +26,9 @@ const SeharStayPage: FC = () => {
             <Image 
               src="/sehar-logo-sub.png" 
               alt="Sehar Stay Logo" 
-              width={120} 
-              height={50}
-              className="h-12 w-auto"
+              width={100} 
+              height={40}
+              className="h-10 w-auto"
             />
           </Link>
 
@@ -40,7 +40,7 @@ const SeharStayPage: FC = () => {
           </button>
 
           <nav className="hidden md:flex gap-6 items-center">
-            <button className="px-6 py-2 bg-[#df6327] text-white font-medium rounded hover:bg-[#c55a1f] transition duration-300">
+            <button className="px-4 py-1 text-sm border border-[#df6327] text-[#df6327] font-medium rounded-full hover:bg-[#df6327] hover:text-white transition duration-300">
               Stay with us
             </button>
           </nav>
@@ -48,7 +48,7 @@ const SeharStayPage: FC = () => {
 
         {isMobileMenuOpen && (
           <div className="md:hidden px-4 pb-4 space-y-2">
-            <button className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded hover:bg-[#c55a1f] transition duration-300">
+            <button className="w-full px-4 py-1 text-sm border border-[#df6327] text-[#df6327] font-medium rounded-full hover:bg-[#df6327] hover:text-white transition duration-300">
               Stay with us
             </button>
           </div>
