@@ -12,6 +12,12 @@ interface Experience {
 
 const experiences: readonly Experience[] = [
   {
+    id: "library-nook",
+    title: "Sacred Library",
+    description: "Immerse yourself in our vibrant, bohemian sanctuary",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-05%20at%2022.04.01.png-LdcrmjbfRTGN3jVK82aWYfKdgmxTTa.jpeg",
+  },
+  {
     id: "snowy-serenity",
     title: "Snowy Serenity",
     description: "Experience the magical landscape covered in pristine snow",
@@ -105,13 +111,16 @@ const ExperiencesSection: FC = () => {
 
           {/* Right Carousel */}
           <div className="flex-1 w-full">
-            <div className="relative bg-white/20 backdrop-blur-sm rounded-3xl p-6 shadow-2xl">
-              {/* Carousel Container */}
-              <div className="relative">
+            <div className="relative group">
+              {/* Carousel Card */}
+              <div className="relative overflow-hidden rounded-3xl shadow-2xl">
+                {/* Decorative frame background */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent pointer-events-none z-10" />
+                
                 {/* Carousel */}
-                <div className="overflow-hidden rounded-2xl bg-white/30">
+                <div className="overflow-hidden">
                   <div
-                    className="flex transition-transform duration-500 ease-out"
+                    className="flex transition-transform duration-700 ease-out"
                     style={{
                       transform: `translateX(-${currentIndex * 100}%)`,
                     }}
@@ -121,23 +130,46 @@ const ExperiencesSection: FC = () => {
                         key={experience.id}
                         className="w-full flex-shrink-0"
                       >
-                        <div className="relative h-80 overflow-hidden">
+                        <div className="relative h-96 overflow-hidden bg-gray-900">
                           {/* Background Image */}
                           <img
                             src={experience.image}
                             alt={experience.title}
                             className="w-full h-full object-cover"
                           />
+                          
+                          {/* Elegant overlay gradient */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Navigation Buttons */}
+                {/* Navigation Buttons - Positioned outside */}
                 <button
                   onClick={goPrev}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-10 shadow-lg"
+                  className="absolute -left-6 top-1/2 -translate-y-1/2 p-3 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-20 shadow-xl hover:shadow-2xl hover:scale-110 hidden md:flex items-center justify-center"
+                  aria-label="Previous experiences"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+                <button
+                  onClick={goToNext}
+                  className="absolute -right-6 top-1/2 -translate-y-1/2 p-3 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-20 shadow-xl hover:shadow-2xl hover:scale-110 hidden md:flex items-center justify-center"
+                  aria-label="Next experiences"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+
+                {/* Mobile Navigation */}
+                <button
+                  onClick={goPrev}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 p-2 bg-[#df6327]/80 hover:bg-[#df6327] text-white rounded-full transition-all duration-300 z-20 md:hidden"
                   aria-label="Previous experiences"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -146,7 +178,7 @@ const ExperiencesSection: FC = () => {
                 </button>
                 <button
                   onClick={goToNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-10 shadow-lg"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-2 bg-[#df6327]/80 hover:bg-[#df6327] text-white rounded-full transition-all duration-300 z-20 md:hidden"
                   aria-label="Next experiences"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -156,13 +188,15 @@ const ExperiencesSection: FC = () => {
               </div>
 
               {/* Indicator Dots */}
-              <div className="flex justify-center gap-2 mt-6">
+              <div className="flex justify-center gap-3 mt-8">
                 {experiences.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`h-2 rounded-full transition-all ${
-                      index === currentIndex ? 'w-8 bg-[#df6327]' : 'w-2 bg-gray-400'
+                    className={`transition-all duration-300 rounded-full ${
+                      index === currentIndex 
+                        ? 'w-8 h-3 bg-[#df6327]' 
+                        : 'w-3 h-3 bg-white/50 hover:bg-white/70'
                     }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
