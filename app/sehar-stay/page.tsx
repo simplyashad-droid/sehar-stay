@@ -57,8 +57,8 @@ const SeharStayPage: FC = () => {
       {/* Page Sections */}
       <main className="pt-0">
         <HeroSection />
-        <RoomsSection />
         <ExperiencesSection />
+        <RoomsSection />
         <ClosingSection />
         <ContactSection />
       </main>
