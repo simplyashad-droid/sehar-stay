@@ -33,7 +33,7 @@ const PhilosophySection: FC = () => {
   }
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-primary">
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-[#df6327]">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -76,7 +76,7 @@ const PhilosophySection: FC = () => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-primary hover:bg-primary/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-[#df6327] hover:bg-[#df6327]/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label="Previous slide"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ const PhilosophySection: FC = () => {
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-primary hover:bg-primary/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-[#df6327] hover:bg-[#df6327]/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label="Next slide"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -101,7 +101,7 @@ const PhilosophySection: FC = () => {
                   key={index}
                   onClick={() => goToSlide(index)}
                   className={`transition-all duration-300 ${
-                    index === currentSlide ? 'bg-primary w-8 h-3' : 'bg-white/50 w-3 h-3 hover:bg-white/75'
+                    index === currentSlide ? 'bg-[#df6327] w-8 h-3' : 'bg-white/50 w-3 h-3 hover:bg-white/75'
                   } rounded-full`}
                   aria-label={`Go to slide ${index + 1}`}
                 />

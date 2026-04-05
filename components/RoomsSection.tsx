@@ -58,7 +58,7 @@ const rooms: readonly Room[] = [
 
 export default function RoomsSection() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-primary/5">
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -69,7 +69,7 @@ export default function RoomsSection() {
         {/* Rooms Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {rooms.map((room) => (
-            <div key={room.id} className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary">
+            <div key={room.id} className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-[#df6327]/20 hover:border-[#df6327]">
               {/* Room Image */}
               <img
                 src={room.image}
@@ -79,8 +79,8 @@ export default function RoomsSection() {
               
               {/* Room Info */}
               <div className="p-6 bg-white">
-                <div className="h-1 w-12 bg-primary mb-4" />
-                <p className="text-primary text-xs font-sans font-bold mb-3 uppercase tracking-widest">{room.category}</p>
+                <div className="h-1 w-12 bg-[#df6327] mb-4" />
+                <p className="text-[#df6327] text-xs font-sans font-bold mb-3 uppercase tracking-widest">{room.category}</p>
                 <h3 className="font-serif text-2xl font-bold text-foreground mb-2">{room.roomName}</h3>
                 {room.roomNameMeaning && <p className="text-foreground/60 font-serif italic text-sm mb-3">{room.roomNameMeaning}</p>}
                 <p className="text-foreground/70 font-sans text-sm leading-relaxed">{room.description}</p>

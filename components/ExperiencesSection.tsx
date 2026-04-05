@@ -44,7 +44,7 @@ const experiences: readonly Experience[] = [
 
 export default function ExperiencesSection() {
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-primary/10 via-background to-background">
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-[#df6327]/10 via-background to-background">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12 md:mb-16">
@@ -55,7 +55,7 @@ export default function ExperiencesSection() {
         {/* Experiences Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
           {experiences.map((experience) => (
-            <div key={experience.id} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-96 hover:-translate-y-2 ring-2 ring-primary/0 hover:ring-primary">
+            <div key={experience.id} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-96 hover:-translate-y-2 ring-2 ring-[#df6327]/0 hover:ring-[#df6327]">
               {/* Background Image */}
               <img
                 src={experience.image}
@@ -67,11 +67,11 @@ export default function ExperiencesSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 opacity-100 group-hover:opacity-95 transition-opacity" />
 
               {/* Orange accent bar */}
-              <div className="absolute top-0 left-0 w-1 h-12 bg-primary transform -translate-x-1 group-hover:translate-x-0 transition-transform duration-300" />
+              <div className="absolute top-0 left-0 w-1 h-12 bg-[#df6327] transform -translate-x-1 group-hover:translate-x-0 transition-transform duration-300" />
 
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">{experience.title}</h3>
+                <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2 group-hover:text-[#df6327] transition-colors duration-300">{experience.title}</h3>
                 <p className="font-sans text-xs md:text-sm text-white/90 leading-relaxed group-hover:text-white/95 transition-colors">{experience.description}</p>
               </div>
             </div>

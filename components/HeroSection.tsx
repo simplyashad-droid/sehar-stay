@@ -28,7 +28,7 @@ const HeroSection: FC = () => {
             Your dream stay in a
           </p>
 
-          <h2 className="font-serif text-primary text-5xl md:text-6xl lg:text-7xl font-bold mb-8 italic leading-tight">
+          <h2 className="font-serif text-[#df6327] text-5xl md:text-6xl lg:text-7xl font-bold mb-8 italic leading-tight">
             Himalayan Cottage
           </h2>
 
@@ -48,7 +48,7 @@ const HeroSection: FC = () => {
       {/* Bottom CTA Section */}
       <div className="absolute bottom-20 left-0 right-0 z-10 flex flex-col items-center gap-4">
         
-        <h1 className="text-primary text-3xl md:text-4xl lg:text-5xl font-serif font-bold italic tracking-wide">
+        <h1 className="text-[#df6327] text-3xl md:text-4xl lg:text-5xl font-serif font-bold italic tracking-wide">
           FIND YOUR ROOM
         </h1>
 
@@ -59,7 +59,7 @@ const HeroSection: FC = () => {
         {/* Scroll Indicator */}
         <div className="mt-6 animate-bounce">
           <svg
-            className="w-6 h-6 text-primary"
+            className="w-6 h-6 text-[#df6327]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

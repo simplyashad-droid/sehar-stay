@@ -36,7 +36,7 @@ export default function ContactSection() {
           {/* Phone */}
           <div className="p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow border border-foreground/10">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 text-primary">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#df6327]/10 text-[#df6327]">
                 <PhoneIcon />
               </div>
             </div>
@@ -49,7 +49,7 @@ export default function ContactSection() {
           {/* Email */}
           <div className="p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow border border-foreground/10">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 text-primary">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#df6327]/10 text-[#df6327]">
                 <EmailIcon />
               </div>
             </div>
@@ -62,7 +62,7 @@ export default function ContactSection() {
           {/* Location */}
           <div className="p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow border border-foreground/10">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 text-primary">
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-[#df6327]/10 text-[#df6327]">
                 <LocationIcon />
               </div>
             </div>
@@ -75,13 +75,13 @@ export default function ContactSection() {
         <div className="mt-12 md:mt-16 text-center border-t border-foreground/10 pt-8">
           <p className="text-foreground/70 font-sans mb-6 uppercase tracking-wide text-sm">Follow our journey</p>
           <div className="flex items-center justify-center gap-4">
-            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-primary transition-all duration-300 font-sans font-medium text-sm border-2 border-primary hover:bg-primary/10">
+            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
               Instagram
             </a>
-            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-primary transition-all duration-300 font-sans font-medium text-sm border-2 border-primary hover:bg-primary/10">
+            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
               Facebook
             </a>
-            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-primary transition-all duration-300 font-sans font-medium text-sm border-2 border-primary hover:bg-primary/10">
+            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
               Twitter
             </a>
           </div>
