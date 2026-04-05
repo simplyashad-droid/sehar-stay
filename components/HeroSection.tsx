@@ -1,6 +1,8 @@
 'use client'
 
-export default function HeroSection() {
+import type { FC } from 'react'
+
+const HeroSection: FC = () => {
   return (
     <section className="relative w-full h-screen flex flex-col overflow-hidden">
       
@@ -45,3 +47,5 @@ export default function HeroSection() {
     </section>
   )
 }
+
+export default HeroSection

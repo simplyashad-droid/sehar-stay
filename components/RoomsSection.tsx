@@ -1,4 +1,5 @@
 import type React from 'react'
+import type { FC } from 'react'
 
 interface Room {
   id: string
@@ -9,17 +10,17 @@ interface Room {
   roomNameMeaning?: string
 }
 
-const rooms: Room[] = [
+const rooms: readonly Room[] = [
   {
     id: "shambala",
-    image: "/sehar-stay/shambala-room.png",
+    image: "/placeholder.svg?height=400&width=400",
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
   },
   {
     id: "nerika",
-    image: "/sehar-stay/nerika-room.png",
+    image: "/placeholder.svg?height=400&width=400",
     category: "SEHAR GREEN ROOM",
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
@@ -27,28 +28,28 @@ const rooms: Room[] = [
   },
   {
     id: "family-hub",
-    image: "/sehar-stay/family-hub-room.png",
+    image: "/placeholder.svg?height=400&width=400",
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
   },
   {
     id: "escape",
-    image: "/sehar-stay/escape-room.png",
+    image: "/placeholder.svg?height=400&width=400",
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
   },
   {
     id: "sacred-space",
-    image: "/sehar-stay/sacred-space-room.png",
+    image: "/placeholder.svg?height=400&width=400",
     category: "SEHAR SACRED SPACE",
     description: "HEALING ROOM - BREATH & SILENCE",
     roomName: "Sacred Space",
   },
   {
     id: "nazar",
-    image: "/sehar-stay/nazar-room.png",
+    image: "/placeholder.svg?height=400&width=400",
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",

@@ -1,11 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, FC } from 'react'
 
-export default function PhilosophySection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+const PhilosophySection: FC = () => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0)
 
-  const images = [
+  const images: string[] = [
     '/sehar-carousel/IMG_5758.jpg',
     '/sehar-carousel/IMG_gate.jpg',
     '/sehar-carousel/IMG_entrance.jpg',
@@ -18,7 +18,7 @@ export default function PhilosophySection() {
       setCurrentSlide((prev) => (prev + 1) % images.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [images.length])
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -113,3 +113,5 @@ export default function PhilosophySection() {
     </section>
   )
 }
+
+export default PhilosophySection

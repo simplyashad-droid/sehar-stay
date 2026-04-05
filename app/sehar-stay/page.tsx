@@ -1,7 +1,6 @@
 'use client'
 
-import type React from "react"
-import { useState } from "react"
+import { useState, type FC } from "react"
 import Link from "next/link"
 
 import HeroSection from "@/components/HeroSection"
@@ -11,8 +10,8 @@ import ExperiencesSection from "@/components/ExperiencesSection"
 import ClosingSection from "@/components/ClosingSection"
 import ContactSection from "@/components/ContactSection"
 
-export default function SeharStayPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+const SeharStayPage: FC = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -59,3 +58,5 @@ export default function SeharStayPage() {
     </div>
   )
 }
+
+export default SeharStayPage

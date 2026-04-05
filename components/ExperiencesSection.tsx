@@ -1,5 +1,7 @@
 'use client'
 
+import type { FC } from 'react'
+
 interface Experience {
   id: string
   title: string
@@ -7,36 +9,36 @@ interface Experience {
   image: string
 }
 
-const experiences: Experience[] = [
+const experiences: readonly Experience[] = [
   {
     id: "yoga",
     title: "Sacred Yoga",
     description: "Connect with your inner self through curated yoga sessions",
-    image: "/sehar-stay/yoga-experience.png",
+    image: "/placeholder.svg?height=500&width=500",
   },
   {
     id: "breathwork",
     title: "Breathwork",
     description: "Harness the power of breath for deeper healing",
-    image: "/sehar-stay/healing-retreats.png",
+    image: "/placeholder.svg?height=500&width=500",
   },
   {
     id: "sound-bath",
     title: "Sound Bath",
     description: "Immerse yourself in healing frequencies and vibrations",
-    image: "/sehar-stay/soundbath-experience.png",
+    image: "/placeholder.svg?height=500&width=500",
   },
   {
     id: "art-therapy",
     title: "Art Therapy",
     description: "Express your creativity through guided art sessions",
-    image: "/sehar-stay/art-exploration.png",
+    image: "/placeholder.svg?height=500&width=500",
   },
   {
     id: "culinary",
     title: "Culinary Experience",
     description: "Learn traditional cooking techniques from local experts",
-    image: "/sehar-stay/cooking-experience.png",
+    image: "/placeholder.svg?height=500&width=500",
   },
 ]
 

@@ -1,6 +1,8 @@
 'use client'
 
-export default function ClosingSection() {
+import type { FC } from 'react'
+
+const ClosingSection: FC = () => {
   return (
     <section className="relative w-full py-24 md:py-32 px-4 md:px-8 overflow-hidden">
       {/* Background Image */}
@@ -34,3 +36,5 @@ export default function ClosingSection() {
     </section>
   )
 }
+
+export default ClosingSection
