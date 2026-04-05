@@ -1,5 +1,9 @@
+'use client'
+
 import type React from 'react'
-import type { FC } from 'react'
+import { useState, type FC } from 'react'
+import Image from 'next/image'
+import RoomBookingModal from './RoomBookingModal'
 
 interface Room {
   id: string
@@ -8,6 +12,7 @@ interface Room {
   description: string
   roomName: string
   roomNameMeaning?: string
+  gradient: string
 }
 
 const rooms: readonly Room[] = [
@@ -17,6 +22,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
+    gradient: "from-purple-100 to-purple-50"
   },
   {
     id: "nerika",
@@ -25,6 +31,7 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
     roomNameMeaning: "Heart Portal",
+    gradient: "from-green-100 to-green-50"
   },
   {
     id: "family-hub",
@@ -32,6 +39,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
+    gradient: "from-blue-100 to-blue-50"
   },
   {
     id: "escape",
@@ -39,6 +47,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
+    gradient: "from-yellow-100 to-yellow-50"
   },
   {
     id: "sacred-space",
@@ -46,6 +55,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR SACRED SPACE",
     description: "HEALING ROOM - BREATH & SILENCE",
     roomName: "Sacred Space",
+    gradient: "from-pink-100 to-pink-50"
   },
   {
     id: "nazar",
@@ -53,43 +63,79 @@ const rooms: readonly Room[] = [
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
+    gradient: "from-amber-100 to-amber-50"
   },
 ]
 
 const RoomsSection: FC = () => {
-  return (
-    <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
-      <div className="max-w-7xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-12 md:mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Where Luxury meets Creativity</h2>
-          <p className="text-foreground/70 font-sans text-lg md:text-xl">Discover our collection of thoughtfully designed rooms</p>
-        </div>
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
 
-        {/* Rooms Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {rooms.map((room) => (
-            <div key={room.id} className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-[#df6327]/20 hover:border-[#df6327]">
-              {/* Room Image */}
-              <img
-                src={room.image}
-                alt={room.roomName}
-                className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              
-              {/* Room Info */}
-              <div className="p-6 bg-white">
-                <div className="h-1 w-12 bg-[#df6327] mb-4" />
-                <p className="text-[#df6327] text-xs font-sans font-bold mb-3 uppercase tracking-widest">{room.category}</p>
-                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">{room.roomName}</h3>
-                {room.roomNameMeaning && <p className="text-foreground/60 font-serif italic text-sm mb-3">{room.roomNameMeaning}</p>}
-                <p className="text-foreground/70 font-sans text-sm leading-relaxed">{room.description}</p>
+  return (
+    <>
+      <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
+        <div className="max-w-7xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Where Luxury meets Creativity</h2>
+            <p className="text-foreground/70 font-sans text-lg md:text-xl">Discover our collection of thoughtfully designed rooms</p>
+          </div>
+
+          {/* Rooms Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {rooms.map((room) => (
+              <div
+                key={room.id}
+                onClick={() => setSelectedRoom(room)}
+                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-br ${room.gradient}`}
+              >
+                {/* Room Image - Centered with padding */}
+                <div className="px-6 pt-6 pb-4 flex justify-center">
+                  <img
+                    src={room.image}
+                    alt={room.roomName}
+                    className="h-48 w-auto object-cover rounded-lg"
+                  />
+                </div>
+
+                {/* Room Info */}
+                <div className="px-6 pb-6 space-y-4">
+                  <div>
+                    <p className="text-[#df6327] text-xs font-sans font-bold mb-2 uppercase tracking-widest">{room.category}</p>
+                    <h3 className="font-serif text-xl font-bold text-foreground">{room.roomName}</h3>
+                    {room.roomNameMeaning && <p className="text-foreground/60 font-serif italic text-sm">{room.roomNameMeaning}</p>}
+                  </div>
+
+                  {/* Discount Message */}
+                  <p className="text-xs text-[#df6327] font-medium">Get flat 10% off if you book with us</p>
+
+                  {/* CTA Buttons */}
+                  <div className="space-y-3 pt-2">
+                    <button className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded-full hover:bg-[#c55a1f] transition duration-300 text-sm">
+                      Book your Stay
+                    </button>
+                    <a
+                      href="#"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex items-center justify-center gap-2 text-xs font-medium text-foreground/60 hover:text-foreground transition"
+                    >
+                      <span>Book on Airbnb</span>
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Room Booking Modal */}
+      {selectedRoom && (
+        <RoomBookingModal room={selectedRoom} onClose={() => setSelectedRoom(null)} />
+      )}
+    </>
   )
 }
 
