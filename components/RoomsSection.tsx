@@ -4,6 +4,7 @@ import type React from 'react'
 import { useState, type FC } from 'react'
 import Image from 'next/image'
 import RoomBookingModal from './RoomBookingModal'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface Room {
   id: string
@@ -75,7 +76,7 @@ const RoomsSection: FC = () => {
       <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
-          <div className="text-center mb-12 md:mb-16">
+          <div className="text-center mb-12 md:mb-16 animate-on-scroll">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Where Luxury meets Creativity</h2>
             <p className="text-foreground/70 font-sans text-lg md:text-xl">Discover our collection of thoughtfully designed rooms</p>
           </div>
@@ -86,7 +87,7 @@ const RoomsSection: FC = () => {
               <div
                 key={room.id}
                 onClick={() => setSelectedRoom(room)}
-                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col`}
+                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
               >
                 {/* Room Image - Full width, edge to edge */}
                 <div className="w-full h-64 overflow-hidden">

@@ -2,6 +2,7 @@
 
 import type { FC } from 'react'
 import { useState } from 'react'
+import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 
 interface Experience {
   id: string
@@ -77,6 +78,8 @@ const ExperiencesSection: FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const itemsPerView = 3
   const maxIndex = Math.ceil(experiences.length - itemsPerView)
+  const contentRef = useScrollAnimation()
+  const carouselRef = useScrollAnimation()
 
   const goToNext = () => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1))
@@ -91,7 +94,7 @@ const ExperiencesSection: FC = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="flex-1 text-white space-y-6">
+          <div ref={contentRef as React.RefObject<HTMLDivElement>} className="flex-1 text-white space-y-6 animate-on-scroll">
             <h2 className="font-serif text-4xl md:text-5xl font-bold">
               Bringing <span className="text-blue-600 italic">Magic</span> to your life
             </h2>
@@ -110,7 +113,7 @@ const ExperiencesSection: FC = () => {
           </div>
 
           {/* Right Carousel */}
-          <div className="flex-1 w-full">
+          <div ref={carouselRef as React.RefObject<HTMLDivElement>} className="flex-1 w-full animate-on-scroll">
             <div className="relative group">
               {/* Carousel Card */}
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
@@ -146,23 +149,23 @@ const ExperiencesSection: FC = () => {
                   </div>
                 </div>
 
-                {/* Navigation Buttons - Positioned outside */}
+                {/* Navigation Buttons - Frosted glass overlay */}
                 <button
                   onClick={goPrev}
-                  className="absolute -left-6 top-1/2 -translate-y-1/2 p-3 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-20 shadow-xl hover:shadow-2xl hover:scale-110 hidden md:flex items-center justify-center"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-white/25 hover:bg-white/35 backdrop-blur-md text-white rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 hidden lg:flex items-center justify-center border border-white/40"
                   aria-label="Previous experiences"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
                 <button
                   onClick={goToNext}
-                  className="absolute -right-6 top-1/2 -translate-y-1/2 p-3 bg-[#df6327] hover:bg-[#c55a1f] text-white rounded-full transition-all duration-300 z-20 shadow-xl hover:shadow-2xl hover:scale-110 hidden md:flex items-center justify-center"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-white/25 hover:bg-white/35 backdrop-blur-md text-white rounded-full transition-all duration-300 z-20 shadow-lg hover:shadow-xl hover:scale-110 hidden lg:flex items-center justify-center border border-white/40"
                   aria-label="Next experiences"
                 >
                   <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
 
