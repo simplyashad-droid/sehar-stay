@@ -42,7 +42,7 @@ const experiences: readonly Experience[] = [
   },
 ]
 
-export default function ExperiencesSection() {
+const ExperiencesSection: FC = () => {
   return (
     <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-[#df6327]/10 via-background to-background">
       <div className="max-w-7xl mx-auto">
@@ -81,3 +81,5 @@ export default function ExperiencesSection() {
     </section>
   )
 }
+
+export default ExperiencesSection

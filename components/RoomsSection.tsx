@@ -56,7 +56,7 @@ const rooms: readonly Room[] = [
   },
 ]
 
-export default function RoomsSection() {
+const RoomsSection: FC = () => {
   return (
     <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
       <div className="max-w-7xl mx-auto">
@@ -92,3 +92,5 @@ export default function RoomsSection() {
     </section>
   )
 }
+
+export default RoomsSection
