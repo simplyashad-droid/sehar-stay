@@ -20,15 +20,15 @@ const HeroSection: FC = () => {
       </div>
 
       {/* Right-Aligned Content Container - Positioned in Sky */}
-      <div className="relative z-10 w-full flex items-start justify-end pt-8 md:pt-12 lg:pt-16">
+      <div className="relative z-10 w-full flex items-start justify-end pt-4 md:pt-6 lg:pt-8">
         
         <div className="flex flex-col pr-6 md:pr-12 lg:pr-20 max-w-md">
           
-          <p className="font-serif text-foreground/80 text-xs md:text-sm mb-1 tracking-wide font-light">
+          <p className="font-sans text-foreground/70 text-[10px] md:text-xs tracking-[0.1em] font-light uppercase">
             Your dream stay in a
           </p>
 
-          <h2 className="font-serif text-[#df6327] text-2xl md:text-4xl lg:text-5xl font-bold mb-3 italic leading-tight">
+          <h2 className="font-serif text-[#df6327] text-2xl md:text-4xl lg:text-5xl font-bold mb-2 italic leading-tight">
             Himalayan Cottage
           </h2>
 
