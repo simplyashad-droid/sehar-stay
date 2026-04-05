@@ -22,7 +22,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
-    gradient: "from-purple-100 to-purple-50"
+    gradient: "from-purple-200 via-purple-100 to-white"
   },
   {
     id: "nerika",
@@ -31,7 +31,7 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
     roomNameMeaning: "Heart Portal",
-    gradient: "from-green-100 to-green-50"
+    gradient: "from-green-200 via-green-100 to-white"
   },
   {
     id: "family-hub",
@@ -39,7 +39,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
-    gradient: "from-blue-100 to-blue-50"
+    gradient: "from-blue-200 via-blue-100 to-white"
   },
   {
     id: "escape",
@@ -47,7 +47,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
-    gradient: "from-yellow-100 to-yellow-50"
+    gradient: "from-yellow-200 via-yellow-100 to-white"
   },
   {
     id: "sacred-space",
@@ -55,7 +55,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR SACRED SPACE",
     description: "HEALING ROOM - BREATH & SILENCE",
     roomName: "Sacred Space",
-    gradient: "from-pink-100 to-pink-50"
+    gradient: "from-pink-200 via-pink-100 to-white"
   },
   {
     id: "nazar",
@@ -63,7 +63,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
-    gradient: "from-amber-100 to-amber-50"
+    gradient: "from-amber-200 via-amber-100 to-white"
   },
 ]
 
@@ -86,22 +86,22 @@ const RoomsSection: FC = () => {
               <div
                 key={room.id}
                 onClick={() => setSelectedRoom(room)}
-                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-br ${room.gradient}`}
+                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col`}
               >
-                {/* Room Image - Centered with padding */}
-                <div className="px-4 pt-6 pb-4 flex justify-center">
+                {/* Room Image - Full width, edge to edge */}
+                <div className="w-full h-64 overflow-hidden">
                   <img
                     src={room.image}
                     alt={room.roomName}
-                    className="h-72 w-auto object-cover rounded-xl shadow-md"
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
                 {/* Room Info */}
-                <div className="px-6 pb-6 space-y-4">
+                <div className="px-6 py-6 space-y-4 flex-grow flex flex-col">
                   <div>
                     <p className="text-[#df6327] text-xs font-sans font-bold mb-2 uppercase tracking-widest">{room.category}</p>
-                    <h3 className="font-serif text-xl font-bold text-foreground">{room.roomName}</h3>
+                    <h3 className="font-serif text-3xl font-bold text-foreground">{room.roomName}</h3>
                     {room.roomNameMeaning && <p className="text-foreground/60 font-serif italic text-sm">{room.roomNameMeaning}</p>}
                   </div>
 
