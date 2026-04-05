@@ -48,11 +48,11 @@ const HeroSection: FC = () => {
       {/* Bottom CTA Section */}
       <div className="absolute bottom-20 left-0 right-0 z-10 flex flex-col items-center gap-4">
         
-        <h1 className="text-[#df6327] text-3xl md:text-4xl lg:text-5xl font-serif font-bold italic tracking-wide">
+        <h1 className="text-[#df6327] text-2xl md:text-3xl lg:text-4xl font-serif font-bold italic tracking-wide">
           FIND YOUR ROOM
         </h1>
 
-        <p className="text-foreground/70 text-xs md:text-sm tracking-widest font-light uppercase">
+        <p className="text-white text-xs md:text-sm tracking-widest font-light uppercase">
           A ROOM MADE FOR YOU
         </p>
 
