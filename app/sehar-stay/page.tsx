@@ -17,7 +17,7 @@ const SeharStayPage: FC = () => {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-blue-300 via-yellow-100 to-transparent backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           
           <Link href="/sehar-stay" className="text-2xl font-serif font-bold">
@@ -46,7 +46,7 @@ const SeharStayPage: FC = () => {
       </header>
 
       {/* Page Sections */}
-      <main className="pt-20">
+      <main className="pt-16">
         <HeroSection />
         <PhilosophySection />
         <RoomsSection />
