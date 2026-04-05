@@ -98,7 +98,7 @@ const RoomsSection: FC = () => {
                 </div>
 
                 {/* Room Info */}
-                <div className="px-6 py-6 space-y-4 flex-grow flex flex-col">
+                <div className="px-6 py-6 space-y-4 flex-grow flex flex-col text-center">
                   <div>
                     <p className="text-[#df6327] text-xs font-sans font-bold mb-2 uppercase tracking-widest">{room.category}</p>
                     <h3 className="font-serif text-3xl font-bold text-foreground">{room.roomName}</h3>
