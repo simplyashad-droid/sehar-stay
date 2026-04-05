@@ -13,14 +13,14 @@ interface Room {
 const rooms: readonly Room[] = [
   {
     id: "shambala",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/placeholder.svg?height=600&width=600",
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
   },
   {
     id: "nerika",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/placeholder.svg?height=600&width=600",
     category: "SEHAR GREEN ROOM",
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
@@ -28,28 +28,28 @@ const rooms: readonly Room[] = [
   },
   {
     id: "family-hub",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/placeholder.svg?height=600&width=600",
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
   },
   {
     id: "escape",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/placeholder.svg?height=600&width=600",
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
   },
   {
     id: "sacred-space",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/placeholder.svg?height=600&width=600",
     category: "SEHAR SACRED SPACE",
     description: "HEALING ROOM - BREATH & SILENCE",
     roomName: "Sacred Space",
   },
   {
     id: "nazar",
-    image: "/placeholder.svg?height=400&width=400",
+    image: "/placeholder.svg?height=600&width=600",
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
@@ -69,20 +69,21 @@ export default function RoomsSection() {
         {/* Rooms Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {rooms.map((room) => (
-            <div key={room.id} className="group relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+            <div key={room.id} className="group relative rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-primary/20 hover:border-primary">
               {/* Room Image */}
               <img
                 src={room.image}
                 alt={room.roomName}
-                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
               />
               
               {/* Room Info */}
               <div className="p-6 bg-white">
-                <p className="text-primary text-sm font-sans font-semibold mb-2 uppercase tracking-wide">{room.category}</p>
-                <h3 className="font-serif text-xl font-bold text-foreground mb-2">{room.roomName}</h3>
+                <div className="h-1 w-12 bg-primary mb-4" />
+                <p className="text-primary text-xs font-sans font-bold mb-3 uppercase tracking-widest">{room.category}</p>
+                <h3 className="font-serif text-2xl font-bold text-foreground mb-2">{room.roomName}</h3>
                 {room.roomNameMeaning && <p className="text-foreground/60 font-serif italic text-sm mb-3">{room.roomNameMeaning}</p>}
-                <p className="text-foreground/70 font-sans text-sm">{room.description}</p>
+                <p className="text-foreground/70 font-sans text-sm leading-relaxed">{room.description}</p>
               </div>
             </div>
           ))}

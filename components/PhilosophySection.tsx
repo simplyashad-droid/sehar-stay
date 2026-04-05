@@ -56,7 +56,7 @@ const PhilosophySection: FC = () => {
           </div>
 
           {/* Right Carousel */}
-          <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-2xl ring-4 ring-white/20">
             {/* Carousel Images */}
             {images.map((image, index) => (
               <div
@@ -76,7 +76,7 @@ const PhilosophySection: FC = () => {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors duration-300"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-primary hover:bg-primary/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label="Previous slide"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ const PhilosophySection: FC = () => {
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors duration-300"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-primary hover:bg-primary/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label="Next slide"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,14 +95,14 @@ const PhilosophySection: FC = () => {
             </button>
 
             {/* Dot Indicators */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-3 bg-black/30 backdrop-blur px-4 py-2 rounded-full">
               {images.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/75'
-                  }`}
+                  className={`transition-all duration-300 ${
+                    index === currentSlide ? 'bg-primary w-8 h-3' : 'bg-white/50 w-3 h-3 hover:bg-white/75'
+                  } rounded-full`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}

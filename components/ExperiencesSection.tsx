@@ -14,31 +14,31 @@ const experiences: readonly Experience[] = [
     id: "yoga",
     title: "Sacred Yoga",
     description: "Connect with your inner self through curated yoga sessions",
-    image: "/placeholder.svg?height=500&width=500",
+    image: "/placeholder.svg?height=700&width=700",
   },
   {
     id: "breathwork",
     title: "Breathwork",
     description: "Harness the power of breath for deeper healing",
-    image: "/placeholder.svg?height=500&width=500",
+    image: "/placeholder.svg?height=700&width=700",
   },
   {
     id: "sound-bath",
     title: "Sound Bath",
     description: "Immerse yourself in healing frequencies and vibrations",
-    image: "/placeholder.svg?height=500&width=500",
+    image: "/placeholder.svg?height=700&width=700",
   },
   {
     id: "art-therapy",
     title: "Art Therapy",
     description: "Express your creativity through guided art sessions",
-    image: "/placeholder.svg?height=500&width=500",
+    image: "/placeholder.svg?height=700&width=700",
   },
   {
     id: "culinary",
     title: "Culinary Experience",
     description: "Learn traditional cooking techniques from local experts",
-    image: "/placeholder.svg?height=500&width=500",
+    image: "/placeholder.svg?height=700&width=700",
   },
 ]
 
@@ -55,7 +55,7 @@ export default function ExperiencesSection() {
         {/* Experiences Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
           {experiences.map((experience) => (
-            <div key={experience.id} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-80 hover:-translate-y-1">
+            <div key={experience.id} className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 h-96 hover:-translate-y-2 ring-2 ring-primary/0 hover:ring-primary">
               {/* Background Image */}
               <img
                 src={experience.image}
@@ -66,9 +66,12 @@ export default function ExperiencesSection() {
               {/* Enhanced Gradient Overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 opacity-100 group-hover:opacity-95 transition-opacity" />
 
+              {/* Orange accent bar */}
+              <div className="absolute top-0 left-0 w-1 h-12 bg-primary transform -translate-x-1 group-hover:translate-x-0 transition-transform duration-300" />
+
               {/* Content */}
               <div className="absolute inset-0 flex flex-col justify-end p-6">
-                <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2 group-hover:text-secondary transition-colors">{experience.title}</h3>
+                <h3 className="font-serif text-lg md:text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">{experience.title}</h3>
                 <p className="font-sans text-xs md:text-sm text-white/90 leading-relaxed group-hover:text-white/95 transition-colors">{experience.description}</p>
               </div>
             </div>
