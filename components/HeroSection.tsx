@@ -6,6 +6,7 @@ const HeroSection: FC = () => {
   return (
     <section className="relative w-full h-screen flex flex-col overflow-hidden">
       
+      {/* Background Image */}
       <div
         className="absolute inset-0 z-0 bg-cover bg-center"
         style={{
@@ -15,37 +16,55 @@ const HeroSection: FC = () => {
           backgroundAttachment: "fixed",
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-black/30" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
       </div>
 
-      <div className="relative z-10 pt-32 text-center max-w-3xl mx-auto px-4">
+      {/* Right-Aligned Content */}
+      <div className="relative z-10 flex flex-col justify-start pt-20 md:pt-32 pr-6 md:pr-16 lg:pr-32 ml-auto max-w-2xl">
         
-        <p className="font-serif text-orange-50 text-lg md:text-xl mb-4 drop-shadow-lg">
+        <p className="font-serif text-foreground/80 text-sm md:text-base mb-2 tracking-wide">
           Your dream stay in a
         </p>
 
-        <h2 className="font-serif text-orange-50 text-5xl md:text-7xl font-bold mb-6 drop-shadow-xl">
+        <h2 className="font-serif text-primary text-5xl md:text-6xl lg:text-7xl font-bold mb-8 italic leading-tight">
           Himalayan Cottage
         </h2>
 
-        <p className="font-serif text-orange-100 text-base md:text-lg drop-shadow-lg">
-          SEHAR BOUTIQUE<br />STAY & GALLERY
+        <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.2em] font-light mb-2">
+          SEHAR BOUTIQUE
+        </p>
+        <p className="font-sans text-foreground text-xs md:text-sm tracking-[0.2em] font-light">
+          STAY & GALLERY
         </p>
       </div>
 
-      <div className="absolute bottom-16 left-0 right-0 z-10 flex flex-col items-center gap-3">
+      {/* Bottom CTA Section */}
+      <div className="absolute bottom-20 left-0 right-0 z-10 flex flex-col items-center gap-4">
         
-        <h1 className="text-primary text-4xl md:text-5xl font-serif font-bold drop-shadow-lg">
-          Find Your Room
+        <h1 className="text-primary text-3xl md:text-4xl lg:text-5xl font-serif font-bold italic tracking-wide">
+          FIND YOUR ROOM
         </h1>
 
-        <p className="text-xs md:text-sm text-orange-100 tracking-widest drop-shadow-md uppercase font-semibold">
+        <p className="text-foreground/70 text-xs md:text-sm tracking-widest font-light uppercase">
           A ROOM MADE FOR YOU
         </p>
 
-        <button className="mt-4 px-8 py-3 bg-primary hover:bg-primary/90 text-white font-sans font-semibold rounded-full transition-all duration-300 drop-shadow-lg hover:scale-105">
-          Explore Rooms
-        </button>
+        {/* Scroll Indicator */}
+        <div className="mt-6 animate-bounce">
+          <svg
+            className="w-6 h-6 text-primary"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </div>
 
       </div>
 
