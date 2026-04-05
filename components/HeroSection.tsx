@@ -46,18 +46,18 @@ const HeroSection: FC = () => {
       </div>
 
       {/* Bottom CTA Section */}
-      <div className="absolute bottom-20 left-0 right-0 z-10 flex flex-col items-center gap-4">
+      <div className="absolute bottom-20 left-0 right-0 z-10 flex flex-col items-center gap-1">
         
-        <h1 className="text-[#df6327] text-lg md:text-xl lg:text-2xl font-serif font-bold italic tracking-wide">
+        <h1 className="text-[#df6327] text-sm md:text-base lg:text-lg font-serif font-bold italic tracking-wide">
           FIND YOUR ROOM
         </h1>
 
-        <p className="text-white text-[10px] md:text-xs tracking-widest font-light uppercase">
+        <p className="text-white text-[8px] md:text-[10px] tracking-widest font-light uppercase">
           A ROOM MADE FOR YOU
         </p>
 
         {/* Scroll Indicator */}
-        <div className="mt-6 animate-bounce">
+        <div className="mt-1 animate-bounce">
           <svg
             className="w-6 h-6 text-[#df6327]"
             fill="none"
