@@ -39,16 +39,18 @@ const SeharStayPage: FC = () => {
             ☰
           </button>
 
-          <nav className="hidden md:flex gap-6 text-foreground">
-            <Link href="/sehar-stay" className="hover:opacity-70 transition">Home</Link>
-            <a href="#contact" className="hover:opacity-70 transition">Contact</a>
+          <nav className="hidden md:flex gap-6 items-center">
+            <button className="px-6 py-2 bg-[#df6327] text-white font-medium rounded hover:bg-[#c55a1f] transition duration-300">
+              Stay with us
+            </button>
           </nav>
         </div>
 
         {isMobileMenuOpen && (
-          <div className="md:hidden px-4 pb-4 space-y-2 text-foreground">
-            <Link href="/sehar-stay" className="block hover:opacity-70 transition">Home</Link>
-            <a href="#contact" className="block hover:opacity-70 transition">Contact</a>
+          <div className="md:hidden px-4 pb-4 space-y-2">
+            <button className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded hover:bg-[#c55a1f] transition duration-300">
+              Stay with us
+            </button>
           </div>
         )}
       </header>
