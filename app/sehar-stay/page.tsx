@@ -2,6 +2,7 @@
 
 import { useState, type FC } from "react"
 import Link from "next/link"
+import Image from "next/image"
 
 import HeroSection from "@/components/HeroSection"
 import PhilosophySection from "@/components/PhilosophySection"
@@ -17,11 +18,17 @@ const SeharStayPage: FC = () => {
     <div className="min-h-screen bg-background text-foreground">
 
       {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-blue-300 via-yellow-100 to-transparent backdrop-blur">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-200 via-orange-100 to-transparent backdrop-blur-sm">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           
-          <Link href="/sehar-stay" className="text-2xl font-serif font-bold">
-            SEHAR
+          <Link href="/sehar-stay" className="flex-shrink-0">
+            <Image 
+              src="/sehar-logo-sub.png" 
+              alt="Sehar Stay Logo" 
+              width={120} 
+              height={50}
+              className="h-12 w-auto"
+            />
           </Link>
 
           <button
@@ -46,7 +53,7 @@ const SeharStayPage: FC = () => {
       </header>
 
       {/* Page Sections */}
-      <main className="pt-16">
+      <main className="pt-0">
         <HeroSection />
         <PhilosophySection />
         <RoomsSection />

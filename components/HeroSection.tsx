@@ -4,7 +4,7 @@ import type { FC } from 'react'
 
 const HeroSection: FC = () => {
   return (
-    <section className="relative w-full h-screen flex flex-col overflow-hidden">
+    <section className="relative w-full h-screen flex flex-col overflow-hidden mt-16">
       
       {/* Background Image - Extended Sky */}
       <div
