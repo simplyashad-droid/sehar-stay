@@ -1,6 +1,15 @@
-import RoomCard from "./RoomCard"
+import type React from 'react'
 
-const rooms = [
+interface Room {
+  id: string
+  image: string
+  category: string
+  description: string
+  roomName: string
+  roomNameMeaning?: string
+}
+
+const rooms: Room[] = [
   {
     id: "shambala",
     image: "/sehar-stay/shambala-room.png",
@@ -59,7 +68,22 @@ export default function RoomsSection() {
         {/* Rooms Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {rooms.map((room) => (
-            <RoomCard key={room.id} {...room} />
+            <div key={room.id} className="group relative rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+              {/* Room Image */}
+              <img
+                src={room.image}
+                alt={room.roomName}
+                className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              
+              {/* Room Info */}
+              <div className="p-6 bg-white">
+                <p className="text-primary text-sm font-sans font-semibold mb-2 uppercase tracking-wide">{room.category}</p>
+                <h3 className="font-serif text-xl font-bold text-foreground mb-2">{room.roomName}</h3>
+                {room.roomNameMeaning && <p className="text-foreground/60 font-serif italic text-sm mb-3">{room.roomNameMeaning}</p>}
+                <p className="text-foreground/70 font-sans text-sm">{room.description}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>

@@ -17,26 +17,26 @@ export default function HeroSection() {
 
       <div className="relative z-10 pt-20 text-center max-w-2xl mx-auto px-4">
         
-        <p style={{ fontFamily: 'serif', color: '#df6327' }}>
+        <p className="font-serif text-primary">
           Your dream stay in a
         </p>
 
-        <h2 style={{ fontFamily: 'serif', color: '#df6327' }}>
+        <h2 className="font-serif text-primary">
           Himalayan Cottage
         </h2>
 
-        <p style={{ fontFamily: 'Georgia, serif' }}>
+        <p className="font-serif">
           SEHAR BOUTIQUE<br />STAY & GALLERY
         </p>
       </div>
 
       <div className="absolute bottom-16 left-0 right-0 z-10 flex flex-col items-center">
         
-        <h1 style={{ color: '#df6327' }}>
+        <h1 className="text-primary">
           Find Your Room
         </h1>
 
-        <p style={{ fontSize: '10px' }}>
+        <p className="text-xs">
           A ROOM MADE FOR YOU
         </p>
 

@@ -10,10 +10,14 @@ const config: Config = {
       colors: {
         background: '#fafaf8',
         foreground: '#1a1a1a',
+        primary: '#df6327',
+        secondary: '#df6327',
       },
       fontFamily: {
-        serif: ['Georgia', 'serif'],
-        sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        playfair: ['var(--font-playfair)'],
+        lora: ['var(--font-lora)'],
+        serif: ['var(--font-playfair)', 'Georgia', 'serif'],
+        sans: ['var(--font-lora)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
       },
     },
   },

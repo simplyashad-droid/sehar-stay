@@ -33,7 +33,7 @@ export default function PhilosophySection() {
   }
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8" style={{ background: "#df6327" }}>
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-primary">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}

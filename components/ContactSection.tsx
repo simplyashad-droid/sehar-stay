@@ -32,7 +32,7 @@ export default function ContactSection() {
           {/* Phone */}
           <div className="p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow border border-foreground/10">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(223, 99, 39, 0.1)', color: '#df6327' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 text-primary">
                 <PhoneIcon />
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function ContactSection() {
           {/* Email */}
           <div className="p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow border border-foreground/10">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(223, 99, 39, 0.1)', color: '#df6327' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 text-primary">
                 <EmailIcon />
               </div>
             </div>
@@ -58,7 +58,7 @@ export default function ContactSection() {
           {/* Location */}
           <div className="p-8 rounded-2xl bg-white shadow-md hover:shadow-lg transition-shadow border border-foreground/10">
             <div className="flex justify-center mb-4">
-              <div className="w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: 'rgba(223, 99, 39, 0.1)', color: '#df6327' }}>
+              <div className="w-12 h-12 rounded-full flex items-center justify-center bg-primary/10 text-primary">
                 <LocationIcon />
               </div>
             </div>
@@ -71,13 +71,13 @@ export default function ContactSection() {
         <div className="mt-12 md:mt-16 text-center border-t border-foreground/10 pt-8">
           <p className="text-foreground/70 font-sans mb-6 uppercase tracking-wide text-sm">Follow our journey</p>
           <div className="flex items-center justify-center gap-4">
-            <a href="#" className="px-6 py-2 rounded-full bg-foreground/5 text-foreground/70 transition-all duration-300 font-sans font-medium text-sm border border-foreground/10" style={{ borderColor: '#df6327', borderWidth: '2px', color: '#df6327' }} onMouseEnter={(e) => { (e.target as HTMLElement).style.backgroundColor = 'rgba(223, 99, 39, 0.1)' }} onMouseLeave={(e) => { (e.target as HTMLElement).style.backgroundColor = 'transparent' }}>
+            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-primary transition-all duration-300 font-sans font-medium text-sm border-2 border-primary hover:bg-primary/10">
               Instagram
             </a>
-            <a href="#" className="px-6 py-2 rounded-full bg-foreground/5 text-foreground/70 transition-all duration-300 font-sans font-medium text-sm border border-foreground/10" style={{ borderColor: '#df6327', borderWidth: '2px', color: '#df6327' }} onMouseEnter={(e) => { (e.target as HTMLElement).style.backgroundColor = 'rgba(223, 99, 39, 0.1)' }} onMouseLeave={(e) => { (e.target as HTMLElement).style.backgroundColor = 'transparent' }}>
+            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-primary transition-all duration-300 font-sans font-medium text-sm border-2 border-primary hover:bg-primary/10">
               Facebook
             </a>
-            <a href="#" className="px-6 py-2 rounded-full bg-foreground/5 text-foreground/70 transition-all duration-300 font-sans font-medium text-sm border border-foreground/10" style={{ borderColor: '#df6327', borderWidth: '2px', color: '#df6327' }} onMouseEnter={(e) => { (e.target as HTMLElement).style.backgroundColor = 'rgba(223, 99, 39, 0.1)' }} onMouseLeave={(e) => { (e.target as HTMLElement).style.backgroundColor = 'transparent' }}>
+            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-primary transition-all duration-300 font-sans font-medium text-sm border-2 border-primary hover:bg-primary/10">
               Twitter
             </a>
           </div>
