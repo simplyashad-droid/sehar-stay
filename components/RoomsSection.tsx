@@ -89,11 +89,11 @@ const RoomsSection: FC = () => {
                 className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-br ${room.gradient}`}
               >
                 {/* Room Image - Centered with padding */}
-                <div className="px-6 pt-6 pb-4 flex justify-center">
+                <div className="px-4 pt-6 pb-4 flex justify-center">
                   <img
                     src={room.image}
                     alt={room.roomName}
-                    className="h-48 w-auto object-cover rounded-lg"
+                    className="h-72 w-auto object-cover rounded-xl shadow-md"
                   />
                 </div>
 

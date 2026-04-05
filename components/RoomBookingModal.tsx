@@ -18,6 +18,7 @@ interface RoomBookingModalProps {
 }
 
 const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [formData, setFormData] = useState({
     checkInDate: '',
     numberOfGuests: 1,
@@ -60,21 +61,48 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
 
         <div className="max-h-[90vh] overflow-y-auto">
           {/* Image Carousel Section */}
-          <div className="w-full bg-white/50 backdrop-blur-sm">
-            <div className="h-48 relative flex items-center justify-center bg-gradient-to-r from-gray-200 to-gray-300">
+          <div className="w-full">
+            {/* Main Carousel Image */}
+            <div className="relative h-96 bg-white/80 flex items-center justify-center overflow-hidden">
               <img
                 src={room.image}
                 alt={room.roomName}
-                className="h-full w-auto object-contain"
+                className="h-full w-full object-cover"
               />
+              
+              {/* Carousel Navigation */}
+              <button
+                onClick={() => setCurrentImageIndex(prev => (prev - 1 + 4) % 4)}
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setCurrentImageIndex(prev => (prev + 1) % 4)}
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
 
-            {/* Carousel indicators */}
-            <div className="flex justify-center gap-2 py-4 px-6">
-              <div className="w-2 h-2 bg-[#df6327] rounded-full" />
-              <div className="w-2 h-2 bg-gray-300 rounded-full opacity-50" />
-              <div className="w-2 h-2 bg-gray-300 rounded-full opacity-50" />
-              <div className="w-2 h-2 bg-gray-300 rounded-full opacity-50" />
+            {/* Carousel Indicators */}
+            <div className="flex justify-center gap-3 py-6 px-6 bg-white/50">
+              {[0, 1, 2, 3].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentImageIndex(index)}
+                  className={`transition-all ${
+                    currentImageIndex === index
+                      ? 'w-3 h-3 bg-[#df6327] rounded-full'
+                      : 'w-2 h-2 bg-gray-400 rounded-full opacity-60 hover:opacity-100'
+                  }`}
+                  aria-label={`Image ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
 
