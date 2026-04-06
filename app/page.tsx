@@ -17,13 +17,8 @@ const HomePage: FC = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
 
-      {/* Test Banner - Visible indicator of deployment */}
-      <div className="fixed top-0 left-0 right-0 z-[100] bg-green-500 text-white text-center py-2 text-sm font-semibold">
-        ✓ Live Deployment Active - sehar-site is LIVE!
-      </div>
-
       {/* Header */}
-      <header className="fixed top-10 left-0 right-0 z-50 bg-gradient-to-b from-orange-200 via-orange-100 to-transparent">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-200 via-orange-100 to-transparent">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           
           <Link href="/" className="flex-shrink-0">
