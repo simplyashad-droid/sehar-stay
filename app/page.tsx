@@ -1,6 +1,5 @@
 'use client'
 
-// Cache bust: v4
 import { useState, type FC } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,7 +10,7 @@ import ExperiencesSection from "@/components/ExperiencesSection"
 import ClosingSection from "@/components/ClosingSection"
 import ContactSection from "@/components/ContactSection"
 
-const SeharStayPage: FC = () => {
+const HomePage: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   return (
@@ -21,7 +20,7 @@ const SeharStayPage: FC = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-orange-200 via-orange-100 to-transparent">
         <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
           
-          <Link href="/sehar-stay" className="flex-shrink-0">
+          <Link href="/" className="flex-shrink-0">
             <Image 
               src="/sehar-logo-sub.png" 
               alt="Sehar Stay Logo" 
@@ -67,4 +66,4 @@ const SeharStayPage: FC = () => {
   )
 }
 
-export default SeharStayPage
+export default HomePage

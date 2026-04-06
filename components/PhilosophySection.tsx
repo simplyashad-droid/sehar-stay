@@ -1,16 +1,16 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, type FC } from 'react'
 
-export default function PhilosophySection() {
-  const [currentSlide, setCurrentSlide] = useState(0)
+const PhilosophySection: FC = () => {
+  const [currentSlide, setCurrentSlide] = useState<number>(0)
 
-  const images = [
-    '/sehar-carousel/IMG_5758.jpg',
-    '/sehar-carousel/IMG_gate.jpg',
-    '/sehar-carousel/IMG_entrance.jpg',
-    '/sehar-carousel/IMG_6648.jpg',
-    '/sehar-carousel/IMG_6393.jpg',
+  const images: string[] = [
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4a574' width='500' height='500'/%3E%3Crect fill='%23c9945d' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b88446'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%238bc9a5' width='500' height='500'/%3E%3Crect fill='%237ab894' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%2368a882'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%236287c9' width='500' height='500'/%3E%3Crect fill='%234a6fb8' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%233857a7'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4c487' width='500' height='500'/%3E%3Crect fill='%23c9b075' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b89c63'/%3E%3C/svg%3E",
+    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4a5a5' width='500' height='500'/%3E%3Crect fill='%23c98b8b' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b87777'/%3E%3C/svg%3E",
   ]
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function PhilosophySection() {
       setCurrentSlide((prev) => (prev + 1) % images.length)
     }, 5000)
     return () => clearInterval(interval)
-  }, [])
+  }, [images.length])
 
   const goToSlide = (index: number) => {
     setCurrentSlide(index)
@@ -33,7 +33,7 @@ export default function PhilosophySection() {
   }
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-8" style={{ background: "#df6327" }}>
+    <section className="py-16 md:py-24 px-4 md:px-8 bg-[#df6327]">
       <div className="max-w-7xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
@@ -56,7 +56,7 @@ export default function PhilosophySection() {
           </div>
 
           {/* Right Carousel */}
-          <div className="relative h-80 md:h-96 rounded-lg overflow-hidden shadow-2xl">
+          <div className="relative h-96 md:h-[500px] rounded-xl overflow-hidden shadow-2xl ring-4 ring-white/20">
             {/* Carousel Images */}
             {images.map((image, index) => (
               <div
@@ -76,7 +76,7 @@ export default function PhilosophySection() {
             {/* Navigation Arrows */}
             <button
               onClick={prevSlide}
-              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors duration-300"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-[#df6327] hover:bg-[#df6327]/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label="Previous slide"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -86,7 +86,7 @@ export default function PhilosophySection() {
 
             <button
               onClick={nextSlide}
-              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors duration-300"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-[#df6327] hover:bg-[#df6327]/80 text-white p-3 rounded-full transition-all duration-300 hover:scale-110"
               aria-label="Next slide"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -95,14 +95,14 @@ export default function PhilosophySection() {
             </button>
 
             {/* Dot Indicators */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex gap-3 bg-black/30 backdrop-blur px-4 py-2 rounded-full">
               {images.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    index === currentSlide ? 'bg-white w-6' : 'bg-white/50 hover:bg-white/75'
-                  }`}
+                  className={`transition-all duration-300 ${
+                    index === currentSlide ? 'bg-[#df6327] w-8 h-3' : 'bg-white/50 w-3 h-3 hover:bg-white/75'
+                  } rounded-full`}
                   aria-label={`Go to slide ${index + 1}`}
                 />
               ))}
@@ -113,3 +113,5 @@ export default function PhilosophySection() {
     </section>
   )
 }
+
+export default PhilosophySection
