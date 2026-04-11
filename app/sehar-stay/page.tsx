@@ -8,6 +8,7 @@ import Image from "next/image"
 import HeroSection from "@/components/HeroSection"
 import RoomsSection from "@/components/RoomsSection"
 import ExperiencesSection from "@/components/ExperiencesSection"
+import SacredExperiencesSection from "@/components/SacredExperiencesSection"
 import ClosingSection from "@/components/ClosingSection"
 import ContactSection from "@/components/ContactSection"
 
@@ -59,6 +60,7 @@ const SeharStayPage: FC = () => {
         <HeroSection />
         <ExperiencesSection />
         <RoomsSection />
+        <SacredExperiencesSection />
         <ClosingSection />
         <ContactSection />
       </main>
