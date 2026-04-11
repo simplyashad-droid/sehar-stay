@@ -132,7 +132,7 @@ const SacredExperiencesSection: FC = () => {
 
       {/* Fullscreen Video Modal */}
       {selectedExperience && (
-        <div className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-black/95 flex items-start justify-center p-4 overflow-y-auto pt-8">
           <button
             onClick={() => setSelectedExperienceId(null)}
             className="absolute top-4 right-4 z-10 text-white hover:bg-white/20 p-2 rounded-full transition-colors"
@@ -140,7 +140,7 @@ const SacredExperiencesSection: FC = () => {
             <X size={32} />
           </button>
 
-          <div className="w-full max-w-4xl max-h-[90vh]">
+          <div className="w-full max-w-2xl">
             {/* Video */}
             <video
               src={selectedExperience.videoUrl}
@@ -151,15 +151,17 @@ const SacredExperiencesSection: FC = () => {
             />
 
             {/* Title and Byeline */}
-            <div className="mt-6 text-center">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+            <div className="mt-8 text-center mb-8">
+              <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
                 {selectedExperience.title}
               </h3>
-              <p className="text-gray-300 text-lg">{selectedExperience.byeline}</p>
+              <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                {selectedExperience.byeline}
+              </p>
             </div>
 
             {/* Navigation */}
-            <div className="flex justify-center items-center gap-8 mt-8">
+            <div className="flex justify-center items-center gap-8 mb-8">
               <button
                 onClick={handlePrevVideo}
                 className="text-white hover:bg-white/20 p-3 rounded-full transition-colors"
