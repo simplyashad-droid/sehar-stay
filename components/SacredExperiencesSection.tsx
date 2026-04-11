@@ -44,8 +44,22 @@ const experiences: Experience[] = [
 
 const SacredExperiencesSection: FC = () => {
   const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null)
+  const [isSectionVisible, setIsSectionVisible] = useState(false)
   const selectedIndex = experiences.findIndex((exp) => exp.id === selectedExperienceId)
   const selectedExperience = selectedIndex !== -1 ? experiences[selectedIndex] : null
+
+  // Lazy load videos only when section is visible
+  React.useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsSectionVisible(true)
+      }
+    }, { threshold: 0.1 })
+
+    const section = document.getElementById('sacred-experiences-section')
+    if (section) observer.observe(section)
+    return () => observer.disconnect()
+  }, [])
 
   const handleNextVideo = () => {
     const nextIndex = (selectedIndex + 1) % experiences.length
@@ -59,7 +73,7 @@ const SacredExperiencesSection: FC = () => {
 
   return (
     <>
-      <section className="py-20 px-4 bg-gradient-to-b from-orange-50 via-white to-orange-50">
+      <section className="py-20 px-4 bg-gradient-to-b from-orange-50 via-white to-orange-50" id="sacred-experiences-section">
         <div className="max-w-7xl mx-auto">
           {/* Section Header */}
           <div className="text-center mb-16">
@@ -88,10 +102,10 @@ const SacredExperiencesSection: FC = () => {
                   style={{ background: experience.thumbnail }}
                 >
                   <video
-                    src={experience.videoUrl}
+                    src={isSectionVisible ? experience.videoUrl : undefined}
                     className="w-full h-full object-cover"
                     muted
-                    preload="metadata"
+                    preload="none"
                     crossOrigin="anonymous"
                     onError={(e) => console.log('[v0] Video load error:', experience.id)}
                   />

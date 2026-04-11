@@ -96,11 +96,12 @@ const RoomsSection: FC = () => {
                 onClick={() => setSelectedRoom(room)}
                 className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
               >
-                {/* Room Image - Full width, edge to edge */}
+                {/* Room Image - Full width, edge to edge - Lazy loaded */}
                 <div className="w-full h-64 overflow-hidden">
                   <img
                     src={room.image}
                     alt={room.roomName}
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

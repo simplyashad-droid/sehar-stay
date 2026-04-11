@@ -1,21 +1,22 @@
 'use client'
 
 import type { FC } from 'react'
+import Image from 'next/image'
 
 const HeroSection: FC = () => {
   return (
     <section className="relative w-full h-screen flex flex-col overflow-hidden mt-16">
       
-      {/* Background Image - Extended Sky */}
-      <div
-        className="absolute inset-0 z-0 bg-cover"
-        style={{
-          backgroundImage: "url('/sehar-cottage.jpg')",
-          backgroundSize: "cover",
-          backgroundPosition: "top center",
-          backgroundAttachment: "fixed",
-        }}
-      >
+      {/* Background Image - Using Next.js Image for optimization */}
+      <div className="absolute inset-0 z-0">
+        <Image
+          src="/sehar-cottage.jpg"
+          alt="Himalayan Cottage"
+          fill
+          priority
+          className="object-cover object-top"
+          style={{ backgroundAttachment: 'fixed' }}
+        />
         <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-transparent" />
       </div>
 
