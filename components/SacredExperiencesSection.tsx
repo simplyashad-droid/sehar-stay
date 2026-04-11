@@ -9,7 +9,7 @@ interface Experience {
   byeline: string
   videoUrl: string
   thumbnail: string
-  posterImage?: string
+  posterImage: string
 }
 
 const experiences: Experience[] = [
