@@ -16,7 +16,7 @@ const experiences: Experience[] = [
     id: 'yoga',
     title: 'Yoga | Breathwork | Meditation',
     byeline: 'Find inner peace through guided practices in our serene mountain sanctuary',
-    videoUrl: '/videos/placeholder-yoga.mp4',
+    videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Yoga%20%281%29-nPpFnaogPpiQjnJpHqrTyHgAVndeWk.mp4',
     thumbnail: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
   },
   {
