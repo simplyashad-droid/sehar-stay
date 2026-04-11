@@ -103,9 +103,10 @@ const SacredExperiencesSection: FC = () => {
                 >
                   <video
                     src={isSectionVisible ? experience.videoUrl : undefined}
+                    poster={experience.posterImage}
                     className="w-full h-full object-cover"
                     muted
-                    preload="none"
+                    preload="metadata"
                     crossOrigin="anonymous"
                     onError={(e) => console.log('[v0] Video load error:', experience.id)}
                   />
