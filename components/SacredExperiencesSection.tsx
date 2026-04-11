@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FC } from 'react'
+import { useState, useEffect, type FC } from 'react'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 
 interface Experience {
@@ -49,7 +49,7 @@ const SacredExperiencesSection: FC = () => {
   const selectedExperience = selectedIndex !== -1 ? experiences[selectedIndex] : null
 
   // Lazy load videos only when section is visible
-  React.useEffect(() => {
+  useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsSectionVisible(true)
