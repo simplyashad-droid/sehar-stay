@@ -14,7 +14,6 @@ interface Room {
   roomName: string
   roomNameMeaning?: string
   gradient: string
-  basePrice?: number
 }
 
 const rooms: readonly Room[] = [
@@ -24,8 +23,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
-    gradient: "from-purple-200 via-purple-100 to-white",
-    basePrice: 5000,
+    gradient: "from-purple-200 via-purple-100 to-white"
   },
   {
     id: "nerika",
@@ -34,8 +32,7 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
     roomNameMeaning: "Heart Portal",
-    gradient: "from-green-200 via-green-100 to-white",
-    basePrice: 4500,
+    gradient: "from-green-200 via-green-100 to-white"
   },
   {
     id: "family-hub",
@@ -43,8 +40,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
-    gradient: "from-blue-200 via-blue-100 to-white",
-    basePrice: 3812,
+    gradient: "from-blue-200 via-blue-100 to-white"
   },
   {
     id: "escape",
@@ -52,8 +48,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
-    gradient: "from-yellow-200 via-yellow-100 to-white",
-    basePrice: 4200,
+    gradient: "from-yellow-200 via-yellow-100 to-white"
   },
   {
     id: "sacred-space",
@@ -61,8 +56,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR SACRED SPACE",
     description: "HEALING ROOM - BREATH & SILENCE",
     roomName: "Sacred Space",
-    gradient: "from-pink-200 via-pink-100 to-white",
-    basePrice: 4800,
+    gradient: "from-pink-200 via-pink-100 to-white"
   },
   {
     id: "nazar",
@@ -70,8 +64,7 @@ const rooms: readonly Room[] = [
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
-    gradient: "from-amber-200 via-amber-100 to-white",
-    basePrice: 3500,
+    gradient: "from-amber-200 via-amber-100 to-white"
   },
 ]
 
@@ -119,7 +112,7 @@ const RoomsSection: FC = () => {
                   {/* CTA Buttons */}
                   <div className="space-y-3 pt-2">
                     <button className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded-full hover:bg-[#c55a1f] transition duration-300 text-sm">
-                      Stay with us
+                      Book your Stay
                     </button>
                     <a
                       href="#"
@@ -141,7 +134,7 @@ const RoomsSection: FC = () => {
 
       {/* Room Booking Modal */}
       {selectedRoom && (
-        <RoomBookingModal onClose={() => setSelectedRoom(null)} initialRoom={selectedRoom} />
+        <RoomBookingModal room={selectedRoom} onClose={() => setSelectedRoom(null)} />
       )}
     </>
   )
