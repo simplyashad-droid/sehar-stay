@@ -8,7 +8,7 @@ interface Experience {
   title: string
   byeline: string
   videoUrl: string
-  icon: string
+  thumbnail: string
 }
 
 const experiences: Experience[] = [
@@ -17,28 +17,28 @@ const experiences: Experience[] = [
     title: 'Yoga | Breathwork | Meditation',
     byeline: 'Find inner peace through guided practices in our serene mountain sanctuary',
     videoUrl: '/videos/placeholder-yoga.mp4',
-    icon: '🧘',
+    thumbnail: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
   },
   {
     id: 'soundbath',
     title: 'Sound Bath',
     byeline: 'Immerse yourself in healing vibrations and sonic therapy',
     videoUrl: '/videos/placeholder-soundbath.mp4',
-    icon: '🔊',
+    thumbnail: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
   },
   {
     id: 'art',
     title: 'Art Exploration',
     byeline: 'Discover your creative expression through guided artistic experiences',
-    videoUrl: '/videos/art-exploration.mov',
-    icon: '🎨',
+    videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-EinrUtEQ5ROfeSYn9xrUGvgjrIzdXN.MOV',
+    thumbnail: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
   },
   {
     id: 'lebanese',
     title: 'Lebanese Cooking & Feast',
     byeline: 'Engage in authentic culinary traditions and share a feast with fellow guests',
-    videoUrl: '/videos/lebanese-cooking.mp4',
-    icon: '🍽️',
+    videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lebanese%20food-1%20%281%29-MO6j9Gb05FOJ59smxhOAlrqZjp0Mfe.mp4',
+    thumbnail: 'linear-gradient(135deg, #ff9b56 0%, #ff6a88 100%)',
   },
 ]
 
@@ -83,12 +83,17 @@ const SacredExperiencesSection: FC = () => {
                 className="group flex flex-col items-center gap-4 cursor-pointer"
               >
                 {/* Circular Video Tile */}
-                <div className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-4 border-orange-200 group-hover:border-[#df6327]">
+                <div
+                  className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-4 border-orange-200 group-hover:border-[#df6327]"
+                  style={{ background: experience.thumbnail }}
+                >
                   <video
                     src={experience.videoUrl}
                     className="w-full h-full object-cover"
                     muted
                     preload="metadata"
+                    crossOrigin="anonymous"
+                    onError={(e) => console.log('[v0] Video load error:', experience.id)}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                     <div className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -139,9 +144,10 @@ const SacredExperiencesSection: FC = () => {
             {/* Video */}
             <video
               src={selectedExperience.videoUrl}
-              className="w-full h-auto rounded-lg"
+              className="w-full h-auto rounded-lg bg-black"
               controls
               autoPlay
+              crossOrigin="anonymous"
             />
 
             {/* Title and Byeline */}
