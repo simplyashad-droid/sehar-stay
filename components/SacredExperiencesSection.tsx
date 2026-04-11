@@ -23,7 +23,7 @@ const experiences: Experience[] = [
     id: 'soundbath',
     title: 'Sound Bath',
     byeline: 'Immerse yourself in healing vibrations and sonic therapy',
-    videoUrl: '/videos/placeholder-soundbath.mp4',
+    videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SOUND%20BATH%20%281%29-nOTXxn6NfNBXxISzHWnCTVNvuzQpIc.mp4',
     thumbnail: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
   },
   {
