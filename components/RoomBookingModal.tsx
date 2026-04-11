@@ -21,6 +21,7 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [formData, setFormData] = useState({
     checkInDate: '',
+    numberOfNights: 1,
     numberOfGuests: 1,
     name: '',
     phone: '',
@@ -29,7 +30,8 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
 
   const basePrice = 5000
   const discount = basePrice * 0.1
-  const finalPrice = basePrice - discount
+  const pricePerNight = basePrice - discount
+  const totalPrice = pricePerNight * formData.numberOfNights
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
@@ -127,10 +129,16 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
                   <p className="text-sm text-foreground/70">-₹{discount.toLocaleString()}</p>
                 </div>
               </div>
+              <div className="border-t border-foreground/20 pt-3 mb-3">
+                <div className="flex justify-between items-center">
+                  <p className="font-semibold text-foreground">Your Price (per night)</p>
+                  <p className="text-xl font-bold text-[#df6327]">₹{pricePerNight.toLocaleString()}</p>
+                </div>
+              </div>
               <div className="border-t border-foreground/20 pt-3">
                 <div className="flex justify-between items-center">
-                  <p className="font-semibold text-foreground">Your Price</p>
-                  <p className="text-2xl font-bold text-[#df6327]">₹{finalPrice.toLocaleString()}</p>
+                  <p className="font-semibold text-foreground">Total ({formData.numberOfNights} night{formData.numberOfNights !== 1 ? 's' : ''})</p>
+                  <p className="text-2xl font-bold text-[#df6327]">₹{totalPrice.toLocaleString()}</p>
                 </div>
               </div>
             </div>
@@ -145,6 +153,21 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
                   name="checkInDate"
                   value={formData.checkInDate}
                   onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-2 border border-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#df6327] bg-white/70"
+                />
+              </div>
+
+              {/* Number of Nights */}
+              <div>
+                <label className="block text-sm font-medium text-foreground mb-2">Number of Nights</label>
+                <input
+                  type="number"
+                  name="numberOfNights"
+                  value={formData.numberOfNights}
+                  onChange={handleInputChange}
+                  min="1"
+                  max="30"
                   required
                   className="w-full px-4 py-2 border border-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#df6327] bg-white/70"
                 />

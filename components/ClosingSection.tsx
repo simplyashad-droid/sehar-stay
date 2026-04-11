@@ -2,7 +2,11 @@
 
 import type { FC } from 'react'
 
-const ClosingSection: FC = () => {
+interface ClosingSectionProps {
+  onStartJourney?: () => void
+}
+
+const ClosingSection: FC<ClosingSectionProps> = ({ onStartJourney }) => {
   return (
     <section className="relative w-full py-24 md:py-32 px-4 md:px-8 overflow-hidden">
       {/* Background Image */}
@@ -29,7 +33,7 @@ const ClosingSection: FC = () => {
           Join us for an unforgettable journey in the heart of the Himalayas.
         </p>
 
-        <button className="bg-[#df6327] text-white px-8 md:px-12 py-3 md:py-4 rounded-full hover:bg-[#df6327]/90 transition-colors font-sans font-semibold text-base md:text-lg shadow-lg">
+        <button onClick={onStartJourney} className="bg-[#df6327] text-white px-8 md:px-12 py-3 md:py-4 rounded-full hover:bg-[#df6327]/90 transition-colors font-sans font-semibold text-base md:text-lg shadow-lg">
           Start Your Journey
         </button>
       </div>

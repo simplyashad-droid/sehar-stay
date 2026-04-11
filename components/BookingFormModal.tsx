@@ -1,0 +1,228 @@
+'use client'
+
+import { useState, type FC } from 'react'
+import { X } from 'lucide-react'
+
+interface Room {
+  id: string
+  image: string
+  category: string
+  description: string
+  roomName: string
+  roomNameMeaning?: string
+  gradient: string
+  basePrice: number
+}
+
+interface BookingFormModalProps {
+  isOpen: boolean
+  onClose: () => void
+  rooms: Room[]
+}
+
+const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms }) => {
+  const [selectedRoomId, setSelectedRoomId] = useState<string>(rooms[0]?.id || '')
+  const [formData, setFormData] = useState({
+    name: '',
+    checkInDate: '',
+    numberOfNights: 1,
+    numberOfGuests: 1,
+  })
+
+  const selectedRoom = rooms.find(room => room.id === selectedRoomId) || rooms[0]
+  const basePrice = selectedRoom?.basePrice || 5000
+  const discount = basePrice * 0.1
+  const pricePerNight = basePrice - discount
+  const totalPrice = pricePerNight * formData.numberOfNights
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: name === 'numberOfNights' || name === 'numberOfGuests' ? parseInt(value) : value,
+    }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    console.log('[v0] Booking submitted:', { ...formData, room: selectedRoom, totalPrice })
+  }
+
+  if (!isOpen) return null
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
+      <div className={`relative max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden bg-gradient-to-br ${selectedRoom?.gradient || 'from-orange-100 to-white'} my-8`}>
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-6 right-6 z-10 p-2 hover:bg-black/10 rounded-full transition"
+          aria-label="Close booking form"
+        >
+          <X size={24} className="text-foreground" />
+        </button>
+
+        <div className="max-h-[90vh] overflow-y-auto">
+          {/* Form Content */}
+          <div className="p-8 space-y-6">
+            {/* Room Info */}
+            <div>
+              <p className="text-[#df6327] text-xs font-bold uppercase tracking-widest mb-2">
+                {selectedRoom?.category}
+              </p>
+              <h2 className="font-serif text-3xl font-bold text-foreground mb-1">
+                {selectedRoom?.roomName}
+              </h2>
+              {selectedRoom?.roomNameMeaning && (
+                <p className="text-foreground/60 font-serif italic">{selectedRoom.roomNameMeaning}</p>
+              )}
+            </div>
+
+            {/* Room Selection Grid */}
+            <div>
+              <label className="block text-sm font-semibold text-foreground mb-4">Select a Room</label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {rooms.map(room => (
+                  <button
+                    key={room.id}
+                    onClick={() => setSelectedRoomId(room.id)}
+                    className={`relative overflow-hidden rounded-lg transition-all duration-300 group ${
+                      selectedRoomId === room.id
+                        ? 'ring-2 ring-[#df6327] shadow-lg scale-105'
+                        : 'hover:shadow-md hover:scale-102'
+                    }`}
+                  >
+                    {/* Room Thumbnail Image */}
+                    <div className="relative h-32 md:h-40 overflow-hidden bg-white/80">
+                      <img
+                        src={room.image}
+                        alt={room.roomName}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+
+                    {/* Room Name */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                      <p className="text-white font-semibold text-sm md:text-base truncate">{room.roomName}</p>
+                      <p className="text-white/80 text-xs">₹{room.basePrice.toLocaleString()}/night</p>
+                    </div>
+
+                    {/* Selection Indicator */}
+                    {selectedRoomId === room.id && (
+                      <div className="absolute top-2 right-2 bg-[#df6327] text-white rounded-full p-1">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Price Breakdown */}
+            <div className="bg-white/60 backdrop-blur-sm rounded-lg p-4 space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-foreground/70">Base Price per night</span>
+                <span className="font-semibold text-foreground">₹{basePrice.toLocaleString()}</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-foreground/70">Discount (10%)</span>
+                <span className="font-semibold text-[#df6327]">-₹{Math.round(discount).toLocaleString()}</span>
+              </div>
+              <div className="border-t border-foreground/20 pt-3">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="font-semibold text-foreground">Price per night</span>
+                  <span className="text-lg font-bold text-[#df6327]">₹{Math.round(pricePerNight).toLocaleString()}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="font-semibold text-foreground">Total ({formData.numberOfNights} night{formData.numberOfNights !== 1 ? 's' : ''})</span>
+                  <span className="text-2xl font-bold text-[#df6327]">₹{Math.round(totalPrice).toLocaleString()}</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Booking Form */}
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Name */}
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder="Your name"
+                  required
+                  className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70"
+                />
+              </div>
+
+              {/* Check-in Date */}
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">Check-in Date</label>
+                <input
+                  type="date"
+                  name="checkInDate"
+                  value={formData.checkInDate}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70"
+                />
+              </div>
+
+              {/* Number of Nights */}
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">Number of Nights</label>
+                <input
+                  type="number"
+                  name="numberOfNights"
+                  value={formData.numberOfNights}
+                  onChange={handleInputChange}
+                  min="1"
+                  max="30"
+                  required
+                  className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70"
+                />
+              </div>
+
+              {/* Number of Guests */}
+              <div>
+                <label className="block text-sm font-semibold text-foreground mb-2">Number of Guests</label>
+                <select
+                  name="numberOfGuests"
+                  value={formData.numberOfGuests}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70 font-medium"
+                >
+                  {[1, 2, 3, 4, 5, 6].map(num => (
+                    <option key={num} value={num}>
+                      {num} {num === 1 ? 'Guest' : 'Guests'}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full py-4 mt-6 bg-[#df6327] text-white font-semibold rounded-full hover:bg-[#c55a1f] transition duration-300 text-lg shadow-lg"
+              >
+                Book Your Stay
+              </button>
+            </form>
+
+            <p className="text-xs text-foreground/60 text-center">10% discount already applied to your booking</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default BookingFormModal
