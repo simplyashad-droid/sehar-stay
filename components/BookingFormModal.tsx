@@ -63,15 +63,6 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
         </button>
 
         <div className="max-h-[90vh] overflow-y-auto">
-          {/* Room Image */}
-          <div className="w-full h-80 bg-white/80 overflow-hidden">
-            <img
-              src={selectedRoom?.image}
-              alt={selectedRoom?.roomName}
-              className="h-full w-full object-cover"
-            />
-          </div>
-
           {/* Form Content */}
           <div className="p-8 space-y-6">
             {/* Room Info */}
