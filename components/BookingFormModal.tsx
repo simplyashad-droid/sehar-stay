@@ -87,20 +87,49 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
               )}
             </div>
 
-            {/* Room Selection Dropdown */}
+            {/* Room Selection Grid */}
             <div>
-              <label className="block text-sm font-semibold text-foreground mb-3">Select a Room</label>
-              <select
-                value={selectedRoomId}
-                onChange={(e) => setSelectedRoomId(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70 font-medium"
-              >
+              <label className="block text-sm font-semibold text-foreground mb-4">Select a Room</label>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {rooms.map(room => (
-                  <option key={room.id} value={room.id}>
-                    {room.roomName} - ₹{room.basePrice.toLocaleString()} per night
-                  </option>
+                  <button
+                    key={room.id}
+                    onClick={() => setSelectedRoomId(room.id)}
+                    className={`relative overflow-hidden rounded-lg transition-all duration-300 group ${
+                      selectedRoomId === room.id
+                        ? 'ring-2 ring-[#df6327] shadow-lg scale-105'
+                        : 'hover:shadow-md hover:scale-102'
+                    }`}
+                  >
+                    {/* Room Thumbnail Image */}
+                    <div className="relative h-32 md:h-40 overflow-hidden bg-white/80">
+                      <img
+                        src={room.image}
+                        alt={room.roomName}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                      />
+                      
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    </div>
+
+                    {/* Room Name */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3">
+                      <p className="text-white font-semibold text-sm md:text-base truncate">{room.roomName}</p>
+                      <p className="text-white/80 text-xs">₹{room.basePrice.toLocaleString()}/night</p>
+                    </div>
+
+                    {/* Selection Indicator */}
+                    {selectedRoomId === room.id && (
+                      <div className="absolute top-2 right-2 bg-[#df6327] text-white rounded-full p-1">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
+                    )}
+                  </button>
                 ))}
-              </select>
+              </div>
             </div>
 
             {/* Price Breakdown */}
