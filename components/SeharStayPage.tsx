@@ -1,6 +1,5 @@
 'use client'
 
-// Cache bust: v6 - Test deployment
 import { useState, type FC } from "react"
 import Link from "next/link"
 import Image from "next/image"
@@ -11,7 +10,7 @@ import ExperiencesSection from "@/components/ExperiencesSection"
 import ClosingSection from "@/components/ClosingSection"
 import ContactSection from "@/components/ContactSection"
 
-const HomePage: FC = () => {
+export const SeharStayPage: FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
 
   return (
@@ -66,5 +65,3 @@ const HomePage: FC = () => {
     </div>
   )
 }
-
-export default HomePage
