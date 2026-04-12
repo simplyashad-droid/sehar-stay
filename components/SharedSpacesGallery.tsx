@@ -63,25 +63,34 @@ const sharedSpaces: SharedSpace[] = [
 
 const SharedSpacesGallery: FC = () => {
   const [selectedImage, setSelectedImage] = useState<SharedSpace | null>(null)
+  const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const currentIndex = selectedImage ? sharedSpaces.findIndex(s => s.id === selectedImage.id) : 0
+
+  const handleNext = () => {
+    const nextIndex = (currentIndex + 1) % sharedSpaces.length
+    setSelectedImage(sharedSpaces[nextIndex])
+  }
+
+  const handlePrevious = () => {
+    const prevIndex = (currentIndex - 1 + sharedSpaces.length) % sharedSpaces.length
+    setSelectedImage(sharedSpaces[prevIndex])
+  }
 
   return (
     <>
-      {/* Gallery Section */}
-      <section className="w-full py-20 px-4 md:px-8 bg-gradient-to-b from-white via-orange-50/30 to-white">
+      {/* Gallery Subsection - No separate section header, integrates with Where Luxury meets Creativity */}
+      <div className="w-full px-4 md:px-8 bg-white py-16 md:py-20">
         <div className="max-w-7xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16">
-            <p className="text-[#df6327] text-xs font-bold uppercase tracking-widest mb-3">SHARED SPACES</p>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4 text-balance">
-              Explore Our Sacred Spaces
-            </h2>
-            <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-              Discover the carefully curated shared spaces at Sehar Boutique Stay
-            </p>
+          {/* Secondary Header Only */}
+          <div className="text-center mb-12">
+            <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2">
+              Shared Spaces at Sehar Boutique Stay
+            </h3>
           </div>
 
-          {/* Masonry Gallery Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-[280px]">
+          {/* Masonry Gallery Grid - 50% smaller with 2 columns on mobile */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-[140px]">
             {sharedSpaces.map((space, index) => {
               // Create varied grid layouts
               const isLarge = index === 0 || index === 3 || index === 7
@@ -134,8 +143,16 @@ const SharedSpacesGallery: FC = () => {
 
       {/* Fullscreen Modal */}
       {selectedImage && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 animate-in fade-in duration-300">
-          {/* Close Button */}
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 animate-in fade-in duration-300"
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') setSelectedImage(null)
+            if (e.key === 'ArrowRight') handleNext()
+            if (e.key === 'ArrowLeft') handlePrevious()
+          }}
+          tabIndex={0}
+        >
+          {/* Close Button - Top Right */}
           <button
             onClick={() => setSelectedImage(null)}
             className="absolute top-6 right-6 z-60 bg-white/20 hover:bg-white/40 text-white p-2 rounded-full transition-colors duration-300 backdrop-blur-sm"
@@ -145,7 +162,7 @@ const SharedSpacesGallery: FC = () => {
           </button>
 
           {/* Main Content */}
-          <div className="w-full max-w-6xl mx-auto animate-in scale-in-95 duration-300">
+          <div className="w-full max-w-6xl mx-auto animate-in scale-in-95 duration-300 relative">
             {/* Image Container */}
             <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden mb-6 shadow-2xl">
               <img
@@ -156,7 +173,7 @@ const SharedSpacesGallery: FC = () => {
             </div>
 
             {/* Description */}
-            <div className="text-center">
+            <div className="text-center mb-8">
               <h2 className="text-white text-3xl md:text-4xl font-serif font-bold mb-3">
                 {selectedImage.title}
               </h2>
@@ -165,19 +182,42 @@ const SharedSpacesGallery: FC = () => {
               </p>
             </div>
 
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-center gap-6 mb-6">
+              {/* Previous Button */}
+              <button
+                onClick={handlePrevious}
+                className="bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-colors duration-300 backdrop-blur-sm"
+                aria-label="Previous image"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Image Counter */}
+              <span className="text-white/80 text-sm font-medium">
+                {currentIndex + 1} / {sharedSpaces.length}
+              </span>
+
+              {/* Next Button */}
+              <button
+                onClick={handleNext}
+                className="bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-colors duration-300 backdrop-blur-sm"
+                aria-label="Next image"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+
             {/* Navigation Hints */}
-            <div className="mt-8 text-center text-white/60 text-sm">
+            <div className="text-center text-white/60 text-xs space-y-1">
+              <p>← → or use arrow keys to navigate</p>
               <p>Press ESC to close</p>
             </div>
           </div>
-
-          {/* Keyboard Close Handler */}
-          <div
-            onKeyDown={(e) => {
-              if (e.key === 'Escape') setSelectedImage(null)
-            }}
-            tabIndex={0}
-          />
         </div>
       )}
     </>
