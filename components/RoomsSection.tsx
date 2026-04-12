@@ -5,6 +5,7 @@ import type React from 'react'
 import { useState, type FC } from 'react'
 import Image from 'next/image'
 import RoomBookingModal from './RoomBookingModal'
+import SharedSpacesGallery from './SharedSpacesGallery'
 
 interface Room {
   id: string
@@ -139,6 +140,9 @@ const RoomsSection: FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Shared Spaces Gallery */}
+      <SharedSpacesGallery />
 
       {/* Room Booking Modal */}
       {selectedRoom && (
