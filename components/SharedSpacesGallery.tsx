@@ -139,7 +139,7 @@ const SharedSpacesGallery: FC = () => {
             })}
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Fullscreen Modal */}
       {selectedImage && (
