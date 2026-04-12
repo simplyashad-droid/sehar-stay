@@ -18,12 +18,6 @@ const sharedSpaces: SharedSpace[] = [
     description: 'Colorful outdoor lounge with prayer flags, plush seating, and mountain views',
   },
   {
-    id: 'soundbath',
-    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/4956a116-8f08-4fa8-9711-4a9cd0e027d9-oeMK2YzQjgeoOxo0rPgmUhRzEzIUHU.jpeg',
-    title: 'Sound Bath Sanctuary',
-    description: 'Mystical neon-lit healing chamber with glowing installations and singing bowls',
-  },
-  {
     id: 'kitchen',
     image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ad380514-f6c2-4595-a045-f193b181cc7c-SJLHHtxnhd5djWmbRBVwnIpEBnGBnw.webp',
     title: 'Kitchen Garden',
