@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import type { FC, ReactNode } from 'react'
 
 const PhoneIcon: FC = () => (
@@ -97,41 +98,33 @@ export default function ContactSection() {
           
           {/* Policy Links */}
           <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
-            <a 
-              href="https://www.seharretreats.com/terms-and-conditions" 
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link 
+              href="/terms-and-conditions"
               className="text-foreground/70 hover:text-foreground font-sans transition-colors"
             >
               Terms & Conditions
-            </a>
+            </Link>
             <span className="text-foreground/30">|</span>
-            <a 
-              href="https://www.seharretreats.com/privacy-policy" 
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link 
+              href="/privacy-policy"
               className="text-foreground/70 hover:text-foreground font-sans transition-colors"
             >
               Privacy Policy
-            </a>
+            </Link>
             <span className="text-foreground/30">|</span>
-            <a 
-              href="https://www.seharretreats.com/cancellation-policy" 
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link 
+              href="/cancellation-policy"
               className="text-foreground/70 hover:text-foreground font-sans transition-colors"
             >
               Cancellation Policy
-            </a>
+            </Link>
             <span className="text-foreground/30">|</span>
-            <a 
-              href="https://www.seharretreats.com/contact-us" 
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link 
+              href="/contact-us"
               className="text-foreground/70 hover:text-foreground font-sans transition-colors"
             >
               Contact Us
-            </a>
+            </Link>
           </div>
         </div>
       </div>
