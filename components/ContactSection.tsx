@@ -88,10 +88,51 @@ export default function ContactSection() {
         </div>
 
         {/* Footer */}
-        <div className="mt-12 md:mt-16 pt-8 border-t border-foreground/10 text-center">
-          <p className="text-foreground/60 font-sans text-sm">
-            © 2026 SEHAR. All rights reserved. | Your dream stay awaits.
-          </p>
+        <div className="mt-12 md:mt-16 pt-8 border-t border-foreground/10">
+          <div className="text-center mb-6">
+            <p className="text-foreground/60 font-sans text-sm">
+              © 2026 SEHAR. All rights reserved. | Your dream stay awaits.
+            </p>
+          </div>
+          
+          {/* Policy Links */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <a 
+              href="https://www.seharretreats.com/terms-and-conditions" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Terms & Conditions
+            </a>
+            <span className="text-foreground/30">|</span>
+            <a 
+              href="https://www.seharretreats.com/privacy-policy" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Privacy Policy
+            </a>
+            <span className="text-foreground/30">|</span>
+            <a 
+              href="https://www.seharretreats.com/cancellation-policy" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Cancellation Policy
+            </a>
+            <span className="text-foreground/30">|</span>
+            <a 
+              href="https://www.seharretreats.com/contact-us" 
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Contact Us
+            </a>
+          </div>
         </div>
       </div>
     </section>
