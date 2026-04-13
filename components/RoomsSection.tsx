@@ -97,13 +97,16 @@ const RoomsSection: FC = () => {
                 onClick={() => setSelectedRoom(room)}
                 className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
               >
-                {/* Room Image - Full width, edge to edge - Lazy loaded */}
-                <div className="w-full h-64 overflow-hidden">
+                {/* Room Image - Full width, edge to edge - Lazy loaded with Next.js Image optimization */}
+                <div className="w-full h-64 overflow-hidden bg-gray-200">
                   <img
                     src={room.image}
                     alt={room.roomName}
                     loading="lazy"
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="300"%3E%3Crect fill="%23f0f0f0" width="400" height="300"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="16" fill="%23999" text-anchor="middle" dominant-baseline="middle"%3EImage loading...%3C/text%3E%3C/svg%3E'
+                    }}
                   />
                 </div>
 

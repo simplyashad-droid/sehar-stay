@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import type { FC, ReactNode } from 'react'
 
 const PhoneIcon: FC = () => (
@@ -88,10 +89,43 @@ export default function ContactSection() {
         </div>
 
         {/* Footer */}
-        <div className="mt-12 md:mt-16 pt-8 border-t border-foreground/10 text-center">
-          <p className="text-foreground/60 font-sans text-sm">
-            © 2026 SEHAR. All rights reserved. | Your dream stay awaits.
-          </p>
+        <div className="mt-12 md:mt-16 pt-8 border-t border-foreground/10">
+          <div className="text-center mb-6">
+            <p className="text-foreground/60 font-sans text-sm">
+              © 2026 SEHAR. All rights reserved. | Your dream stay awaits.
+            </p>
+          </div>
+          
+          {/* Policy Links */}
+          <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+            <Link 
+              href="/terms-and-conditions"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Terms & Conditions
+            </Link>
+            <span className="text-foreground/30">|</span>
+            <Link 
+              href="/privacy-policy"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <span className="text-foreground/30">|</span>
+            <Link 
+              href="/cancellation-policy"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Cancellation Policy
+            </Link>
+            <span className="text-foreground/30">|</span>
+            <Link 
+              href="/contact-us"
+              className="text-foreground/70 hover:text-foreground font-sans transition-colors"
+            >
+              Contact Us
+            </Link>
+          </div>
         </div>
       </div>
     </section>

@@ -131,11 +131,15 @@ const ExperiencesSection: FC = () => {
                         className="w-full flex-shrink-0"
                       >
                         <div className="relative h-96 overflow-hidden bg-gray-900">
-                          {/* Background Image */}
+                          {/* Background Image with lazy loading and error handling */}
                           <img
                             src={experience.image}
                             alt={experience.title}
+                            loading="lazy"
                             className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.currentTarget.style.background = '#4b5563'
+                            }}
                           />
                           
                           {/* Elegant overlay gradient */}
