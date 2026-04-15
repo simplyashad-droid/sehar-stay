@@ -105,20 +105,18 @@ const SacredExperiencesSection: FC = () => {
               >
                 {/* Portrait Rectangle Video Tile */}
                 <div
-                  className="relative w-28 h-40 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105 border border-orange-200 group-hover:border-[#df6327] bg-gray-200"
+                  className="relative w-28 h-40 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105 border border-orange-200 group-hover:border-[#df6327] bg-gray-100"
                 >
                   <video
                     src={experience.videoUrl}
-                    className="w-full h-full object-cover bg-gray-300"
-                    controls={false}
+                    className="w-full h-full object-cover"
+                    playsInline
                     muted
-                    loop
                     preload="auto"
                     crossOrigin="anonymous"
-                    onError={(e) => console.log('[v0] Video load error:', experience.id)}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
-                    <div className="text-white text-4xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       ▶
                     </div>
                   </div>
