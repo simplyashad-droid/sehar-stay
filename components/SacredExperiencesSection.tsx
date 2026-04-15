@@ -94,17 +94,16 @@ const SacredExperiencesSection: FC = () => {
           </div>
 
           {/* Experience Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10 max-w-3xl mx-auto">
             {experiences.map((experience) => (
               <button
                 key={experience.id}
                 onClick={() => setSelectedExperienceId(experience.id)}
                 className="group flex flex-col items-center gap-4 cursor-pointer"
               >
-                {/* Circular Video Tile */}
+                {/* Portrait Rectangle Video Tile */}
                 <div
-                  className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-4 border-orange-200 group-hover:border-[#df6327]"
-                  style={{ background: experience.thumbnail }}
+                  className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-orange-200 group-hover:border-[#df6327]"
                 >
                   <video
                     src={isSectionVisible ? experience.videoUrl : undefined}
@@ -123,12 +122,12 @@ const SacredExperiencesSection: FC = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-center font-semibold text-gray-900 text-sm md:text-base leading-tight">
+                <h3 className="text-center font-semibold text-gray-900 text-base md:text-lg leading-tight">
                   {experience.title}
                 </h3>
 
                 {/* Byeline */}
-                <p className="text-center text-xs md:text-sm text-gray-600 line-clamp-2 max-w-[150px]">
+                <p className="text-center text-sm md:text-base text-gray-600 line-clamp-2 max-w-sm">
                   {experience.byeline}
                 </p>
               </button>
