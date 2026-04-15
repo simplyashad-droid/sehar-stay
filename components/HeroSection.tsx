@@ -47,7 +47,7 @@ const HeroSection: FC = () => {
       <div className="absolute bottom-20 left-0 right-0 z-10 flex flex-col items-center gap-1">
         
         <h1 className="text-[#df6327] text-sm md:text-base lg:text-lg font-serif font-bold italic tracking-wide">
-          FIND YOUR ROOM
+          CHOOSE YOUR ROOM
         </h1>
 
         <p className="text-white text-[8px] md:text-[10px] tracking-widest font-light uppercase">
