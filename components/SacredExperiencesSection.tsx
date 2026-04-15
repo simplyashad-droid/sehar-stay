@@ -109,7 +109,6 @@ const SacredExperiencesSection: FC = () => {
                 >
                   <video
                     src={experience.videoUrl}
-                    {...(experience.posterImage && { poster: experience.posterImage })}
                     className="w-full h-full object-cover bg-gray-200"
                     playsInline
                     muted
@@ -165,7 +164,6 @@ const SacredExperiencesSection: FC = () => {
             {/* Video */}
             <video
               src={selectedExperience.videoUrl}
-              {...(selectedExperience.posterImage && { poster: selectedExperience.posterImage })}
               className="w-full h-auto rounded-lg bg-black"
               controls
               autoPlay
