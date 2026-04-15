@@ -105,7 +105,7 @@ const SacredExperiencesSection: FC = () => {
               >
                 {/* Portrait Rectangle Video Tile */}
                 <div
-                  className="relative w-28 h-40 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105 border border-orange-200 group-hover:border-[#df6327] bg-gray-100"
+                  className="relative w-56 h-80 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:scale-105 border border-orange-200 group-hover:border-[#df6327] bg-gray-100"
                 >
                   <video
                     src={experience.videoUrl}
