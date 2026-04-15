@@ -50,6 +50,13 @@ const experiences: Experience[] = [
 const SacredExperiencesSection: FC = () => {
   const [selectedExperienceId, setSelectedExperienceId] = useState<string | null>(null)
   const [isSectionVisible, setIsSectionVisible] = useState(false)
+  const [hasError, setHasError] = useState(false)
+
+  // Safety check: ensure experiences array is valid
+  if (!experiences || experiences.length === 0) {
+    return null
+  }
+
   const selectedIndex = experiences.findIndex((exp) => exp.id === selectedExperienceId)
   const selectedExperience = selectedIndex !== -1 ? experiences[selectedIndex] : null
 
@@ -57,27 +64,44 @@ const SacredExperiencesSection: FC = () => {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setIsSectionVisible(true)
-      }
-    }, { threshold: 0.1 })
+    try {
+      const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSectionVisible(true)
+        }
+      }, { threshold: 0.1 })
 
-    const section = document.getElementById('sacred-experiences-section')
-    if (section) observer.observe(section)
-    return () => observer.disconnect()
+      const section = document.getElementById('sacred-experiences-section')
+      if (section) observer.observe(section)
+      return () => observer.disconnect()
+    } catch (err) {
+      console.log('[v0] IntersectionObserver error:', err)
+      setIsSectionVisible(true)
+    }
   }, [])
 
   const handleNextVideo = () => {
-    if (selectedIndex === -1) return
-    const nextIndex = (selectedIndex + 1) % experiences.length
-    setSelectedExperienceId(experiences[nextIndex].id)
+    try {
+      if (selectedIndex === -1 || !experiences[selectedIndex]) return
+      const nextIndex = (selectedIndex + 1) % experiences.length
+      if (experiences[nextIndex]) {
+        setSelectedExperienceId(experiences[nextIndex].id)
+      }
+    } catch (err) {
+      console.log('[v0] Navigation error:', err)
+    }
   }
 
   const handlePrevVideo = () => {
-    if (selectedIndex === -1) return
-    const prevIndex = selectedIndex === 0 ? experiences.length - 1 : selectedIndex - 1
-    setSelectedExperienceId(experiences[prevIndex].id)
+    try {
+      if (selectedIndex === -1 || !experiences[selectedIndex]) return
+      const prevIndex = selectedIndex === 0 ? experiences.length - 1 : selectedIndex - 1
+      if (experiences[prevIndex]) {
+        setSelectedExperienceId(experiences[prevIndex].id)
+      }
+    } catch (err) {
+      console.log('[v0] Navigation error:', err)
+    }
   }
 
   return (
@@ -102,7 +126,13 @@ const SacredExperiencesSection: FC = () => {
             {experiences.map((experience) => (
               <button
                 key={experience.id}
-                onClick={() => setSelectedExperienceId(experience.id)}
+                onClick={() => {
+                  try {
+                    setSelectedExperienceId(experience.id)
+                  } catch (err) {
+                    console.log('[v0] Click handler error:', err)
+                  }
+                }}
                 className="group flex flex-col items-center gap-4 cursor-pointer"
               >
                 {/* Portrait Rectangle Video Tile */}
@@ -142,7 +172,13 @@ const SacredExperiencesSection: FC = () => {
             {experiences.map((exp) => (
               <button
                 key={exp.id}
-                onClick={() => setSelectedExperienceId(exp.id)}
+                onClick={() => {
+                  try {
+                    setSelectedExperienceId(exp.id)
+                  } catch (err) {
+                    console.log('[v0] Dot click error:', err)
+                  }
+                }}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
                   selectedExperienceId === exp.id ? 'bg-[#df6327] w-8' : 'bg-orange-200 hover:bg-orange-300'
                 }`}
@@ -153,10 +189,16 @@ const SacredExperiencesSection: FC = () => {
       </section>
 
       {/* Fullscreen Video Modal */}
-      {selectedExperience && (
+      {selectedExperience && selectedIndex !== -1 && (
         <div className="fixed inset-0 z-50 bg-black/95 flex items-start justify-center p-4 overflow-y-auto pt-8">
           <button
-            onClick={() => setSelectedExperienceId(null)}
+            onClick={() => {
+              try {
+                setSelectedExperienceId(null)
+              } catch (err) {
+                console.log('[v0] Close button error:', err)
+              }
+            }}
             className="absolute top-4 right-4 z-10 text-white hover:bg-white/20 p-2 rounded-full transition-colors"
           >
             <X size={32} />
@@ -164,23 +206,30 @@ const SacredExperiencesSection: FC = () => {
 
           <div className="w-full max-w-2xl">
             {/* Video */}
-            <video
-              src={selectedExperience.videoUrl}
-              className="w-full h-auto rounded-lg bg-black"
-              controls
-              autoPlay
-              muted
-              crossOrigin="anonymous"
-            />
+            {selectedExperience.videoUrl && (
+              <video
+                src={selectedExperience.videoUrl}
+                className="w-full h-auto rounded-lg bg-black"
+                controls
+                autoPlay
+                muted
+                crossOrigin="anonymous"
+                onError={() => console.log('[v0] Video playback error')}
+              />
+            )}
 
             {/* Title and Byeline */}
             <div className="mt-8 text-center mb-8">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
-                {selectedExperience.title}
-              </h3>
-              <p className="text-gray-300 text-base md:text-lg leading-relaxed">
-                {selectedExperience.byeline}
-              </p>
+              {selectedExperience.title && (
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-3">
+                  {selectedExperience.title}
+                </h3>
+              )}
+              {selectedExperience.byeline && (
+                <p className="text-gray-300 text-base md:text-lg leading-relaxed">
+                  {selectedExperience.byeline}
+                </p>
+              )}
             </div>
 
             {/* Navigation */}
