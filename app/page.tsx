@@ -1,5 +1,3 @@
-'use client'
-
 // Cache bust: v6 - Test deployment
 import { useState, type FC } from "react"
 import Link from "next/link"
