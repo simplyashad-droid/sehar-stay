@@ -86,7 +86,7 @@ const RoomsSection: FC = () => {
           {/* Section Header */}
           <div className="text-center mb-12 md:mb-16 animate-on-scroll">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Where Luxury meets Creativity</h2>
-            <p className="text-foreground/70 font-sans text-lg md:text-xl">Discover our collection of thoughtfully designed rooms</p>
+            <p className="text-foreground/70 font-sans text-lg md:text-xl">Discover our collection of thoughtfully curated rooms</p>
           </div>
 
           {/* Rooms Grid */}
