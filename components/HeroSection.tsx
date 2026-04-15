@@ -35,10 +35,7 @@ const HeroSection: FC = () => {
 
           <div className="space-y-0.5">
             <p className="font-sans text-foreground/70 text-[10px] md:text-xs tracking-[0.1em] font-light">
-              SEHAR BOUTIQUE
-            </p>
-            <p className="font-sans text-foreground/70 text-[10px] md:text-xs tracking-[0.1em] font-light">
-              STAY & GALLERY
+              SEHAR BOUTIQUE STAY & GALLERY
             </p>
           </div>
 
