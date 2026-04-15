@@ -19,7 +19,7 @@ const experiences: Experience[] = [
     byeline: 'Find inner peace through guided practices in our serene mountain sanctuary',
     videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Yoga%20%281%29-nPpFnaogPpiQjnJpHqrTyHgAVndeWk.mp4',
     thumbnail: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-    posterImage: '/yoga-meditation-poster.jpg',
+    posterImage: '',
   },
   {
     id: 'soundbath',
@@ -27,7 +27,7 @@ const experiences: Experience[] = [
     byeline: 'Immerse yourself in healing vibrations and sonic therapy',
     videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/SOUND%20BATH%20%281%29-nOTXxn6NfNBXxISzHWnCTVNvuzQpIc.mp4',
     thumbnail: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-    posterImage: '/sound-bath-poster.jpg',
+    posterImage: '',
   },
   {
     id: 'art',
@@ -35,7 +35,7 @@ const experiences: Experience[] = [
     byeline: 'Discover your creative expression through guided artistic experiences',
     videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-EinrUtEQ5ROfeSYn9xrUGvgjrIzdXN.MOV',
     thumbnail: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    posterImage: '/art-exploration-poster.jpg',
+    posterImage: '',
   },
   {
     id: 'lebanese',
@@ -43,7 +43,7 @@ const experiences: Experience[] = [
     byeline: 'Engage in authentic culinary traditions and share a feast with fellow guests',
     videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Lebanese%20food-1%20%281%29-MO6j9Gb05FOJ59smxhOAlrqZjp0Mfe.mp4',
     thumbnail: 'linear-gradient(135deg, #ff9b56 0%, #ff6a88 100%)',
-    posterImage: '/lebanese-food-poster.jpg',
+    posterImage: '',
   },
 ]
 
@@ -109,7 +109,7 @@ const SacredExperiencesSection: FC = () => {
                 >
                   <video
                     src={experience.videoUrl}
-                    poster={experience.posterImage}
+                    {...(experience.posterImage && { poster: experience.posterImage })}
                     className="w-full h-full object-cover bg-gray-200"
                     playsInline
                     muted
@@ -165,13 +165,12 @@ const SacredExperiencesSection: FC = () => {
             {/* Video */}
             <video
               src={selectedExperience.videoUrl}
-              poster={selectedExperience.posterImage}
+              {...(selectedExperience.posterImage && { poster: selectedExperience.posterImage })}
               className="w-full h-auto rounded-lg bg-black"
               controls
               autoPlay
               muted
               crossOrigin="anonymous"
-              onError={(e) => console.log('[v0] Video error:', e.currentTarget.error)}
             />
 
             {/* Title and Byeline */}
