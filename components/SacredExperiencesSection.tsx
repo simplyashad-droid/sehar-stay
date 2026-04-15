@@ -69,11 +69,13 @@ const SacredExperiencesSection: FC = () => {
   }, [])
 
   const handleNextVideo = () => {
+    if (selectedIndex === -1) return
     const nextIndex = (selectedIndex + 1) % experiences.length
     setSelectedExperienceId(experiences[nextIndex].id)
   }
 
   const handlePrevVideo = () => {
+    if (selectedIndex === -1) return
     const prevIndex = selectedIndex === 0 ? experiences.length - 1 : selectedIndex - 1
     setSelectedExperienceId(experiences[prevIndex].id)
   }
