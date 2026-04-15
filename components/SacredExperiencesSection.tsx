@@ -103,14 +103,13 @@ const SacredExperiencesSection: FC = () => {
               >
                 {/* Portrait Rectangle Video Tile */}
                 <div
-                  className="relative w-full h-64 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-orange-200 group-hover:border-[#df6327]"
+                  className="relative w-40 h-60 rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-2xl hover:scale-105 border-2 border-orange-200 group-hover:border-[#df6327]"
                 >
                   <video
-                    src={isSectionVisible ? experience.videoUrl : undefined}
-                    poster={experience.posterImage}
+                    src={experience.videoUrl}
                     className="w-full h-full object-cover"
                     muted
-                    preload="metadata"
+                    preload="auto"
                     crossOrigin="anonymous"
                     onError={(e) => console.log('[v0] Video load error:', experience.id)}
                   />
