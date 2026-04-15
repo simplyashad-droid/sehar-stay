@@ -109,10 +109,11 @@ const SacredExperiencesSection: FC = () => {
                 >
                   <video
                     src={experience.videoUrl}
-                    className="w-full h-full object-cover"
+                    poster={experience.posterImage}
+                    className="w-full h-full object-cover bg-gray-200"
                     playsInline
                     muted
-                    preload="auto"
+                    preload="metadata"
                     crossOrigin="anonymous"
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
@@ -164,10 +165,13 @@ const SacredExperiencesSection: FC = () => {
             {/* Video */}
             <video
               src={selectedExperience.videoUrl}
+              poster={selectedExperience.posterImage}
               className="w-full h-auto rounded-lg bg-black"
               controls
               autoPlay
+              muted
               crossOrigin="anonymous"
+              onError={(e) => console.log('[v0] Video error:', e.currentTarget.error)}
             />
 
             {/* Title and Byeline */}
