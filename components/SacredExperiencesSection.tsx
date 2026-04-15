@@ -55,6 +55,8 @@ const SacredExperiencesSection: FC = () => {
 
   // Lazy load videos only when section is visible
   useEffect(() => {
+    if (typeof window === 'undefined') return
+
     const observer = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         setIsSectionVisible(true)
