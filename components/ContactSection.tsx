@@ -83,7 +83,7 @@ export default function ContactSection() {
               Facebook
             </a>
             <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
-              YouTube
+              Twitter
             </a>
           </div>
         </div>
