@@ -9,8 +9,6 @@ const PhilosophySection: FC = () => {
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4a574' width='500' height='500'/%3E%3Crect fill='%23c9945d' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b88446'/%3E%3C/svg%3E",
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%238bc9a5' width='500' height='500'/%3E%3Crect fill='%237ab894' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%2368a882'/%3E%3C/svg%3E",
     "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%236287c9' width='500' height='500'/%3E%3Crect fill='%234a6fb8' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%233857a7'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4c487' width='500' height='500'/%3E%3Crect fill='%23c9b075' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b89c63'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4a5a5' width='500' height='500'/%3E%3Crect fill='%23c98b8b' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b87777'/%3E%3C/svg%3E",
   ]
 
   useEffect(() => {
@@ -38,7 +36,7 @@ const PhilosophySection: FC = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="text-white">
-            <h2 className="font-serif text-5xl md:text-6xl font-bold mb-8 text-balance leading-tight">
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-8 text-balance leading-tight">
               Bringing <span className="italic text-blue-900">Magic</span> to your life
             </h2>
 
@@ -68,7 +66,7 @@ const PhilosophySection: FC = () => {
                 <img
                   src={image}
                   alt={`Carousel slide ${index + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover object-top"
                 />
               </div>
             ))}
