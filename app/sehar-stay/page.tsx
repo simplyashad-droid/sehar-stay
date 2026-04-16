@@ -26,6 +26,7 @@ const SeharStayPage: FC = () => {
       roomName: "Shambala",
       gradient: "from-purple-200 via-purple-100 to-white",
       basePrice: 5000,
+      maxGuests: 2,
     },
     {
       id: "nerika",
@@ -36,6 +37,7 @@ const SeharStayPage: FC = () => {
       roomNameMeaning: "Heart Portal",
       gradient: "from-green-200 via-green-100 to-white",
       basePrice: 4000,
+      maxGuests: 2,
     },
     {
       id: "family-hub",
@@ -45,6 +47,7 @@ const SeharStayPage: FC = () => {
       roomName: "Family Hub",
       gradient: "from-blue-200 via-blue-100 to-white",
       basePrice: 8800,
+      maxGuests: 6,
     },
     {
       id: "escape",
@@ -54,6 +57,7 @@ const SeharStayPage: FC = () => {
       roomName: "Escape",
       gradient: "from-yellow-200 via-yellow-100 to-white",
       basePrice: 4000,
+      maxGuests: 3,
     },
     {
       id: "nazar",
@@ -63,6 +67,7 @@ const SeharStayPage: FC = () => {
       roomName: "Nazar",
       gradient: "from-amber-200 via-amber-100 to-white",
       basePrice: 4000,
+      maxGuests: 3,
     },
   ]
 

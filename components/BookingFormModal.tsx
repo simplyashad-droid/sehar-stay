@@ -218,7 +218,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
               </button>
             </form>
 
-            <p className="text-xs text-foreground/60 text-center">10% discount already applied to your booking</p>
+            <p className="text-xs text-foreground/60 text-center">15% discount already applied to your booking</p>
           </div>
         </div>
       </div>
