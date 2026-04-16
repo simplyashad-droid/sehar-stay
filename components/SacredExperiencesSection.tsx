@@ -33,9 +33,9 @@ const experiences: Experience[] = [
     id: 'art',
     title: 'Art Exploration',
     byeline: 'Discover your creative expression through guided artistic experiences',
-    videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-EinrUtEQ5ROfeSYn9xrUGvgjrIzdXN.MOV',
+    videoUrl: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-PeCic4vFYA0S8WIk1UO4xuVwIKg5uL.mp4',
     thumbnail: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-    posterImage: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/art-EinrUtEQ5ROfeSYn9xrUGvgjrIzdXN-thumb.jpg',
+    posterImage: '',
   },
   {
     id: 'lebanese',
