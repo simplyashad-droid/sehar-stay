@@ -2,9 +2,8 @@
 
 // v3 - cache bust
 import type React from 'react'
-import { useState, type FC } from 'react'
+import type { FC } from 'react'
 import Image from 'next/image'
-import RoomBookingModal from './RoomBookingModal'
 import SharedSpacesGallery from './SharedSpacesGallery'
 
 interface Room {
@@ -68,8 +67,6 @@ const rooms: readonly Room[] = [
 ]
 
 const RoomsSection: FC = () => {
-  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
-
   return (
     <>
       <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
@@ -85,8 +82,7 @@ const RoomsSection: FC = () => {
             {rooms.map((room) => (
               <div
                 key={room.id}
-                onClick={() => setSelectedRoom(room)}
-                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
+                className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
               >
                 {/* Room Image - Full width, edge to edge - Lazy loaded with Next.js Image optimization */}
                 <div className="w-full h-64 overflow-hidden bg-gray-200">
@@ -137,11 +133,6 @@ const RoomsSection: FC = () => {
 
       {/* Shared Spaces Gallery */}
       <SharedSpacesGallery />
-
-      {/* Room Booking Modal */}
-      {selectedRoom && (
-        <RoomBookingModal room={selectedRoom} onClose={() => setSelectedRoom(null)} />
-      )}
     </>
   )
 }
