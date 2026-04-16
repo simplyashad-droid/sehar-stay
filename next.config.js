@@ -10,9 +10,6 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    isrMemoryCacheSize: 52 * 1024 * 1024,
-  },
 }
 
 module.exports = nextConfig
