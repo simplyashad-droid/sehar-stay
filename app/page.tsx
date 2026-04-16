@@ -56,15 +56,6 @@ const HomePage: FC = () => {
       basePrice: 4200,
     },
     {
-      id: "sacred-space",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sacred-space-room-8Ywa8p7qj3uVNG2iMCHaYjm64mz8pt.png",
-      category: "SEHAR SACRED SPACE",
-      description: "HEALING ROOM - BREATH & SILENCE",
-      roomName: "Sacred Space",
-      gradient: "from-pink-200 via-pink-100 to-white",
-      basePrice: 4800,
-    },
-    {
       id: "nazar",
       image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nazar-room-ywMwvA5lWmq75Dd5FEwcJNsmwT2br4.png",
       category: "SEHAR STANDARD ROOM",
