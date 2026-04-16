@@ -12,6 +12,7 @@ interface Room {
   roomNameMeaning?: string
   gradient: string
   basePrice: number
+  maxGuests: number
 }
 
 interface BookingFormModalProps {
@@ -31,7 +32,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
 
   const selectedRoom = rooms.find(room => room.id === selectedRoomId) || rooms[0]
   const basePrice = selectedRoom?.basePrice || 5000
-  const discount = basePrice * 0.1
+  const discount = basePrice * 0.15
   const pricePerNight = basePrice - discount
   const totalPrice = pricePerNight * formData.numberOfNights
 
@@ -131,7 +132,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
                 <span className="font-semibold text-foreground">₹{basePrice.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-foreground/70">Discount (10%)</span>
+                <span className="text-foreground/70">Discount (15%)</span>
                 <span className="font-semibold text-[#df6327]">-₹{Math.round(discount).toLocaleString()}</span>
               </div>
               <div className="border-t border-foreground/20 pt-3">
@@ -200,7 +201,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
                   required
                   className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70 font-medium"
                 >
-                  {[1, 2, 3, 4, 5, 6].map(num => (
+                  {Array.from({ length: selectedRoom?.maxGuests || 6 }, (_, i) => i + 1).map(num => (
                     <option key={num} value={num}>
                       {num} {num === 1 ? 'Guest' : 'Guests'}
                     </option>

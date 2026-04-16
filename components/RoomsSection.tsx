@@ -17,6 +17,7 @@ interface Room {
   gradient: string
   basePrice: number
   airbnbUrl?: string
+  maxGuests: number
 }
 
 const rooms: readonly Room[] = [
@@ -29,6 +30,7 @@ const rooms: readonly Room[] = [
     gradient: "from-purple-200 via-purple-100 to-white",
     basePrice: 5000,
     airbnbUrl: "https://www.airbnb.co.in/rooms/1432655075166039675",
+    maxGuests: 2,
   },
   {
     id: "nerika",
@@ -40,6 +42,7 @@ const rooms: readonly Room[] = [
     gradient: "from-green-200 via-green-100 to-white",
     basePrice: 4000,
     airbnbUrl: "https://www.airbnb.co.in/rooms/1160859683250687941",
+    maxGuests: 2,
   },
   {
     id: "family-hub",
@@ -50,6 +53,7 @@ const rooms: readonly Room[] = [
     gradient: "from-blue-200 via-blue-100 to-white",
     basePrice: 8800,
     airbnbUrl: "https://www.airbnb.co.in/rooms/1572289170324100000",
+    maxGuests: 6,
   },
   {
     id: "escape",
@@ -60,6 +64,7 @@ const rooms: readonly Room[] = [
     gradient: "from-yellow-200 via-yellow-100 to-white",
     basePrice: 4000,
     airbnbUrl: "https://www.airbnb.co.in/rooms/910499645296431133",
+    maxGuests: 3,
   },
   {
     id: "nazar",
@@ -70,6 +75,7 @@ const rooms: readonly Room[] = [
     gradient: "from-amber-200 via-amber-100 to-white",
     basePrice: 4000,
     airbnbUrl: "https://www.airbnb.co.in/rooms/1431977842087362144",
+    maxGuests: 3,
   },
 ]
 
