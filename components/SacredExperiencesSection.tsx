@@ -144,8 +144,9 @@ const SacredExperiencesSection: FC = () => {
                     className="w-full h-full object-cover bg-gray-200"
                     playsInline
                     muted
-                    preload="metadata"
+                    preload={experience.id === 'art' ? 'auto' : 'metadata'}
                     crossOrigin="anonymous"
+                    onError={() => console.log('[v0] Video load error for:', experience.id)}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
                     <div className="text-white text-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300">
