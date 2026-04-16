@@ -25,7 +25,7 @@ const ClosingSection: FC<ClosingSectionProps> = ({ onStartJourney }) => {
       {/* Content */}
       <div className="relative z-10 max-w-4xl mx-auto text-center">
         <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mb-6 text-balance">
-          We create long-lasting memories
+          We create long lasting memories
         </h2>
 
         <p className="text-lg md:text-xl text-white/90 font-sans leading-relaxed mb-8">
