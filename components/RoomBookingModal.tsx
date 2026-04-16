@@ -10,6 +10,7 @@ interface Room {
   roomName: string
   roomNameMeaning?: string
   gradient: string
+  basePrice: number
 }
 
 interface RoomBookingModalProps {
@@ -28,7 +29,7 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
     termsAccepted: false,
   })
 
-  const basePrice = 5000
+  const basePrice = room.basePrice
   const discount = basePrice * 0.1
   const pricePerNight = basePrice - discount
   const totalPrice = pricePerNight * formData.numberOfNights
