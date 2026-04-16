@@ -16,6 +16,8 @@ interface Room {
   roomNameMeaning?: string
   gradient: string
   basePrice: number
+  airbnbUrl?: string
+  maxGuests: number
 }
 
 const rooms: readonly Room[] = [
@@ -27,6 +29,8 @@ const rooms: readonly Room[] = [
     roomName: "Shambala",
     gradient: "from-purple-200 via-purple-100 to-white",
     basePrice: 5000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1432655075166039675",
+    maxGuests: 2,
   },
   {
     id: "nerika",
@@ -36,7 +40,9 @@ const rooms: readonly Room[] = [
     roomName: "Nerika",
     roomNameMeaning: "Heart Portal",
     gradient: "from-green-200 via-green-100 to-white",
-    basePrice: 4500,
+    basePrice: 4000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1160859683250687941",
+    maxGuests: 2,
   },
   {
     id: "family-hub",
@@ -45,7 +51,9 @@ const rooms: readonly Room[] = [
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
     gradient: "from-blue-200 via-blue-100 to-white",
-    basePrice: 3812,
+    basePrice: 8800,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1572289170324100000",
+    maxGuests: 6,
   },
   {
     id: "escape",
@@ -54,16 +62,9 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
     gradient: "from-yellow-200 via-yellow-100 to-white",
-    basePrice: 4200,
-  },
-  {
-    id: "sacred-space",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sacred-space-room-8Ywa8p7qj3uVNG2iMCHaYjm64mz8pt.png",
-    category: "SEHAR SACRED SPACE",
-    description: "HEALING ROOM - BREATH & SILENCE",
-    roomName: "Sacred Space",
-    gradient: "from-pink-200 via-pink-100 to-white",
-    basePrice: 4800,
+    basePrice: 4000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/910499645296431133",
+    maxGuests: 3,
   },
   {
     id: "nazar",
@@ -72,7 +73,9 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
     gradient: "from-amber-200 via-amber-100 to-white",
-    basePrice: 3500,
+    basePrice: 4000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1431977842087362144",
+    maxGuests: 3,
   },
 ]
 
@@ -94,8 +97,7 @@ const RoomsSection: FC = () => {
             {rooms.map((room) => (
               <div
                 key={room.id}
-                onClick={() => setSelectedRoom(room)}
-                className={`cursor-pointer rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
+                className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gradient-to-b ${room.gradient} flex flex-col animate-on-scroll`}
               >
                 {/* Room Image - Full width, edge to edge - Lazy loaded with Next.js Image optimization */}
                 <div className="w-full h-64 overflow-hidden bg-gray-200">
@@ -123,11 +125,16 @@ const RoomsSection: FC = () => {
 
                   {/* CTA Buttons */}
                   <div className="space-y-3 pt-2">
-                    <button className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded-full hover:bg-[#c55a1f] transition duration-300 text-sm">
+                    <button
+                      onClick={() => setSelectedRoom(room)}
+                      className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded-full hover:bg-[#c55a1f] transition duration-300 text-sm"
+                    >
                       Book your Stay
                     </button>
                     <a
-                      href="#"
+                      href={room.airbnbUrl || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       className="flex items-center justify-center gap-2 text-xs font-medium text-foreground/60 hover:text-foreground transition"
                     >

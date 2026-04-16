@@ -12,6 +12,7 @@ interface Room {
   roomNameMeaning?: string
   gradient: string
   basePrice: number
+  maxGuests: number
 }
 
 interface BookingFormModalProps {
@@ -31,15 +32,23 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
 
   const selectedRoom = rooms.find(room => room.id === selectedRoomId) || rooms[0]
   const basePrice = selectedRoom?.basePrice || 5000
-  const discount = basePrice * 0.1
+  const maxGuests = selectedRoom?.maxGuests || 6
+  const discount = basePrice * 0.15
   const pricePerNight = basePrice - discount
   const totalPrice = pricePerNight * formData.numberOfNights
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target
+    const parsedValue = name === 'numberOfNights' || name === 'numberOfGuests' ? parseInt(value) : value
+    
+    // Ensure numberOfGuests doesn't exceed the selected room's maxGuests
+    if (name === 'numberOfGuests' && parseInt(value) > maxGuests) {
+      return
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: name === 'numberOfNights' || name === 'numberOfGuests' ? parseInt(value) : value,
+      [name]: parsedValue,
     }))
   }
 
@@ -85,7 +94,13 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
                 {rooms.map(room => (
                   <button
                     key={room.id}
-                    onClick={() => setSelectedRoomId(room.id)}
+                    onClick={() => {
+                      setSelectedRoomId(room.id)
+                      // Reset guests to 1 if it exceeds the new room's capacity
+                      if (formData.numberOfGuests > room.maxGuests) {
+                        setFormData(prev => ({ ...prev, numberOfGuests: 1 }))
+                      }
+                    }}
                     className={`relative overflow-hidden rounded-lg transition-all duration-300 group ${
                       selectedRoomId === room.id
                         ? 'ring-2 ring-[#df6327] shadow-lg scale-105'
@@ -131,7 +146,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
                 <span className="font-semibold text-foreground">₹{basePrice.toLocaleString()}</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-foreground/70">Discount (10%)</span>
+                <span className="text-foreground/70">Discount (15%)</span>
                 <span className="font-semibold text-[#df6327]">-₹{Math.round(discount).toLocaleString()}</span>
               </div>
               <div className="border-t border-foreground/20 pt-3">
@@ -200,7 +215,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
                   required
                   className="w-full px-4 py-3 border-2 border-foreground/20 rounded-lg focus:outline-none focus:border-[#df6327] bg-white/70 font-medium"
                 >
-                  {[1, 2, 3, 4, 5, 6].map(num => (
+                  {Array.from({ length: maxGuests }, (_, i) => i + 1).map(num => (
                     <option key={num} value={num}>
                       {num} {num === 1 ? 'Guest' : 'Guests'}
                     </option>
@@ -217,7 +232,7 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
               </button>
             </form>
 
-            <p className="text-xs text-foreground/60 text-center">10% discount already applied to your booking</p>
+            <p className="text-xs text-foreground/60 text-center">15% discount already applied to your booking</p>
           </div>
         </div>
       </div>

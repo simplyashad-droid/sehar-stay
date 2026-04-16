@@ -10,6 +10,8 @@ interface Room {
   roomName: string
   roomNameMeaning?: string
   gradient: string
+  basePrice: number
+  maxGuests: number
 }
 
 interface RoomBookingModalProps {
@@ -28,8 +30,8 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
     termsAccepted: false,
   })
 
-  const basePrice = 5000
-  const discount = basePrice * 0.1
+  const basePrice = room.basePrice
+  const discount = basePrice * 0.15
   const pricePerNight = basePrice - discount
   const totalPrice = pricePerNight * formData.numberOfNights
 
@@ -183,7 +185,7 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
                   required
                   className="w-full px-4 py-2 border border-foreground/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#df6327] bg-white/70"
                 >
-                  {[1, 2, 3, 4, 5, 6].map((num) => (
+                  {Array.from({ length: room.maxGuests }, (_, i) => i + 1).map((num) => (
                     <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
                   ))}
                 </select>

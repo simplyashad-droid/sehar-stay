@@ -26,6 +26,7 @@ const SeharStayPage: FC = () => {
       roomName: "Shambala",
       gradient: "from-purple-200 via-purple-100 to-white",
       basePrice: 5000,
+      maxGuests: 2,
     },
     {
       id: "nerika",
@@ -35,7 +36,8 @@ const SeharStayPage: FC = () => {
       roomName: "Nerika",
       roomNameMeaning: "Heart Portal",
       gradient: "from-green-200 via-green-100 to-white",
-      basePrice: 4500,
+      basePrice: 4000,
+      maxGuests: 2,
     },
     {
       id: "family-hub",
@@ -44,7 +46,8 @@ const SeharStayPage: FC = () => {
       description: "WHERE TOGETHERNESS IS EXPERIENCED",
       roomName: "Family Hub",
       gradient: "from-blue-200 via-blue-100 to-white",
-      basePrice: 3812,
+      basePrice: 8800,
+      maxGuests: 6,
     },
     {
       id: "escape",
@@ -53,16 +56,8 @@ const SeharStayPage: FC = () => {
       description: "LUXURY ROOM WITH GARDEN VIEW",
       roomName: "Escape",
       gradient: "from-yellow-200 via-yellow-100 to-white",
-      basePrice: 4200,
-    },
-    {
-      id: "sacred-space",
-      image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sacred-space-room-8Ywa8p7qj3uVNG2iMCHaYjm64mz8pt.png",
-      category: "SEHAR SACRED SPACE",
-      description: "HEALING ROOM - BREATH & SILENCE",
-      roomName: "Sacred Space",
-      gradient: "from-pink-200 via-pink-100 to-white",
-      basePrice: 4800,
+      basePrice: 4000,
+      maxGuests: 3,
     },
     {
       id: "nazar",
@@ -71,7 +66,8 @@ const SeharStayPage: FC = () => {
       description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
       roomName: "Nazar",
       gradient: "from-amber-200 via-amber-100 to-white",
-      basePrice: 3500,
+      basePrice: 4000,
+      maxGuests: 3,
     },
   ]
 
