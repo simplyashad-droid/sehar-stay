@@ -30,7 +30,7 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
   })
 
   const basePrice = room.basePrice
-  const discount = basePrice * 0.1
+  const discount = basePrice * 0.15
   const pricePerNight = basePrice - discount
   const totalPrice = pricePerNight * formData.numberOfNights
 

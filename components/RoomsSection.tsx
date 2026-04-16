@@ -16,6 +16,7 @@ interface Room {
   roomNameMeaning?: string
   gradient: string
   basePrice: number
+  airbnbUrl?: string
 }
 
 const rooms: readonly Room[] = [
@@ -27,6 +28,7 @@ const rooms: readonly Room[] = [
     roomName: "Shambala",
     gradient: "from-purple-200 via-purple-100 to-white",
     basePrice: 5000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1432655075166039675",
   },
   {
     id: "nerika",
@@ -36,7 +38,8 @@ const rooms: readonly Room[] = [
     roomName: "Nerika",
     roomNameMeaning: "Heart Portal",
     gradient: "from-green-200 via-green-100 to-white",
-    basePrice: 4500,
+    basePrice: 4000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1160859683250687941",
   },
   {
     id: "family-hub",
@@ -45,7 +48,8 @@ const rooms: readonly Room[] = [
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
     gradient: "from-blue-200 via-blue-100 to-white",
-    basePrice: 3812,
+    basePrice: 8800,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1572289170324100000",
   },
   {
     id: "escape",
@@ -54,7 +58,8 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
     gradient: "from-yellow-200 via-yellow-100 to-white",
-    basePrice: 4200,
+    basePrice: 4000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/910499645296431133",
   },
   {
     id: "nazar",
@@ -63,7 +68,8 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
     gradient: "from-amber-200 via-amber-100 to-white",
-    basePrice: 3500,
+    basePrice: 4000,
+    airbnbUrl: "https://www.airbnb.co.in/rooms/1431977842087362144",
   },
 ]
 
@@ -120,7 +126,9 @@ const RoomsSection: FC = () => {
                       Book your Stay
                     </button>
                     <a
-                      href="#"
+                      href={room.airbnbUrl || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
                       className="flex items-center justify-center gap-2 text-xs font-medium text-foreground/60 hover:text-foreground transition"
                     >
