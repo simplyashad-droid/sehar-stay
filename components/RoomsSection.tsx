@@ -2,8 +2,9 @@
 
 // v3 - cache bust
 import type React from 'react'
-import type { FC } from 'react'
+import { useState, type FC } from 'react'
 import Image from 'next/image'
+import RoomBookingModal from './RoomBookingModal'
 import SharedSpacesGallery from './SharedSpacesGallery'
 
 interface Room {
@@ -67,6 +68,8 @@ const rooms: readonly Room[] = [
 ]
 
 const RoomsSection: FC = () => {
+  const [selectedRoom, setSelectedRoom] = useState<Room | null>(null)
+
   return (
     <>
       <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-b from-background to-[#df6327]/5">
@@ -110,7 +113,10 @@ const RoomsSection: FC = () => {
 
                   {/* CTA Buttons */}
                   <div className="space-y-3 pt-2">
-                    <button className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded-full hover:bg-[#c55a1f] transition duration-300 text-sm">
+                    <button
+                      onClick={() => setSelectedRoom(room)}
+                      className="w-full px-6 py-2 bg-[#df6327] text-white font-medium rounded-full hover:bg-[#c55a1f] transition duration-300 text-sm"
+                    >
                       Book your Stay
                     </button>
                     <a
@@ -133,6 +139,11 @@ const RoomsSection: FC = () => {
 
       {/* Shared Spaces Gallery */}
       <SharedSpacesGallery />
+
+      {/* Room Booking Modal */}
+      {selectedRoom && (
+        <RoomBookingModal room={selectedRoom} onClose={() => setSelectedRoom(null)} />
+      )}
     </>
   )
 }
