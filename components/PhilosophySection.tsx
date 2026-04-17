@@ -1,14 +1,13 @@
 'use client'
 
 import { useState, useEffect, type FC } from 'react'
+import { philosophyCarouselImages } from '@/constants/philosophyCarouselImages'
 
 const PhilosophySection: FC = () => {
   const [currentSlide, setCurrentSlide] = useState<number>(0)
 
-  const images: string[] = [
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%23d4a574' width='500' height='500'/%3E%3Crect fill='%23c9945d' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%23b88446'/%3E%3C/svg%3E",
-    "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='500'%3E%3Crect fill='%236287c9' width='500' height='500'/%3E%3Crect fill='%234a6fb8' x='50' y='50' width='400' height='400'/%3E%3Ccircle cx='250' cy='250' r='120' fill='%233857a7'/%3E%3C/svg%3E",
-  ]
+  const images = philosophyCarouselImages.map(img => img.url)
+  const imageData = philosophyCarouselImages
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -70,7 +69,7 @@ const PhilosophySection: FC = () => {
                 >
                   <img
                     src={image}
-                    alt={`Carousel slide ${index + 1}`}
+                    alt={imageData[index]?.alt || `Carousel slide ${index + 1}`}
                     className="w-full h-full object-cover object-top"
                   />
                 </div>
