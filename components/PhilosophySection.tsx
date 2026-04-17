@@ -47,7 +47,7 @@ const PhilosophySection: FC = () => {
             </p>
 
             <p className="font-sans text-base md:text-lg leading-relaxed text-white/85 font-light pt-2">
-              We can&apos;t stop raving about the magic of our HOUSE OF BLISS.<br />
+              We can&apos;t stop raving about the magic of our HOUSE OF BLISS.<br /><br />
               The only way to fully experience its magic is to spend a few days with us.
             </p>
           </div>
