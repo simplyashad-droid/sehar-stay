@@ -10,6 +10,7 @@ import SharedSpacesGallery from './SharedSpacesGallery'
 interface Room {
   id: string
   image: string
+  images?: string[]
   category: string
   description: string
   roomName: string
@@ -24,6 +25,13 @@ const rooms: readonly Room[] = [
   {
     id: "shambala",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shambala-room-POTNbhWctm7eJXh6eYvGe3swbHS18V.png",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/shambala-room-POTNbhWctm7eJXh6eYvGe3swbHS18V.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sambhala-2-p8fhfSurVc5R3JDLvuMindt1ojM1fx.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/sambhala-2-qKeL8FmFv9rTzOKyokhRoxxkU0gTrl.jpeg",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sambhala-5-ddForTeyYGAN0yS1knzqtxE5YaSnfq.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Sambhala-3-sKXIiiBL0lwm5bObrDsLZyXD4y2nRi.webp",
+    ],
     category: "SEHAR PURPLE ROOM",
     description: "LUXURY ROOM WITH ENSUITE BATHROOM AND ATTIC",
     roomName: "Shambala",
@@ -35,6 +43,13 @@ const rooms: readonly Room[] = [
   {
     id: "nerika",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nerika-room-4QuiGwKJA7BKRRZmX0cZRYEJXehoZL.png",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nerika-room-4QuiGwKJA7BKRRZmX0cZRYEJXehoZL.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nerika-1-qsSJHtN9xLx4MU2VlgVa55vjpLIHOu.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nerika-2-kPBV9Qhm2htiGKqLQb1e2ZGUkJWTt0.webp",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nerika-3-ROaF3l2Lmx0t7QhVSqErLA6aw8mhb6.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nerika-4-YqSP6xLAL1begM42Ix9ZGYUoZeGPlH.avif",
+    ],
     category: "SEHAR GREEN ROOM",
     description: "LUXURY ROOM WITH BOHO INTERIORS",
     roomName: "Nerika",
@@ -47,6 +62,12 @@ const rooms: readonly Room[] = [
   {
     id: "family-hub",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/family-hub-room-csBiYxBeQzJdNqpOmadxlTGMkTGjiZ.png",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/family-hub-room-csBiYxBeQzJdNqpOmadxlTGMkTGjiZ.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Family-2-FYVP28KVl4mHqBxm1uZSOOuhVZcFTj.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Family-1-GPEUdBpSn6ctY1yCBnIa3dptfVKwjh.webp",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/family-3-9m9wI3dSUlQ8KOpnd514T1H5LXb3KS.avif",
+    ],
     category: "SEHAR FAMILY STUDIO",
     description: "WHERE TOGETHERNESS IS EXPERIENCED",
     roomName: "Family Hub",
@@ -58,6 +79,11 @@ const rooms: readonly Room[] = [
   {
     id: "escape",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/escape-room-8PtxdZC389QRB6PQgjkSkJU6QEvg5T.png",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/escape-room-8PtxdZC389QRB6PQgjkSkJU6QEvg5T.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/escape-2-qY4vp81Ny5WYlmrOZh7hNMSu91Whiw.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/escape-1-Jpfa3C2yT0jnXa2ogPcE3t4MjKqGDr.avif",
+    ],
     category: "SEHAR DREAMY ROOM",
     description: "LUXURY ROOM WITH GARDEN VIEW",
     roomName: "Escape",
@@ -69,6 +95,11 @@ const rooms: readonly Room[] = [
   {
     id: "nazar",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nazar-room-ywMwvA5lWmq75Dd5FEwcJNsmwT2br4.png",
+    images: [
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/nazar-room-ywMwvA5lWmq75Dd5FEwcJNsmwT2br4.png",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nazar-1-Fnml0HcsNX0KRD2QhwOrqPF5KgPP4d.avif",
+      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Nazar-2-4dNTXrHmJFqA0a7y6p7hWYpGufbF4H.avif",
+    ],
     category: "SEHAR STANDARD ROOM",
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",

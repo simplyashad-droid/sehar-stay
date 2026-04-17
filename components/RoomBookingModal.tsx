@@ -5,6 +5,7 @@ import { useState, type FC } from 'react'
 interface Room {
   id: string
   image: string
+  images?: string[]
   category: string
   description: string
   roomName: string
@@ -29,6 +30,9 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
     phone: '',
     termsAccepted: false,
   })
+
+  const roomImages = room.images || [room.image]
+  const totalImages = roomImages.length
 
   const basePrice = room.basePrice
   const discount = basePrice * 0.15
@@ -69,45 +73,51 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
             {/* Main Carousel Image */}
             <div className="relative h-96 bg-white/80 flex items-center justify-center overflow-hidden">
               <img
-                src={room.image}
-                alt={room.roomName}
+                src={roomImages[currentImageIndex]}
+                alt={`${room.roomName} - Image ${currentImageIndex + 1}`}
                 className="h-full w-full object-cover"
               />
               
               {/* Carousel Navigation */}
-              <button
-                onClick={() => setCurrentImageIndex(prev => (prev - 1 + 4) % 4)}
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
-              <button
-                onClick={() => setCurrentImageIndex(prev => (prev + 1) % 4)}
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
+              {totalImages > 1 && (
+                <>
+                  <button
+                    onClick={() => setCurrentImageIndex(prev => (prev - 1 + totalImages) % totalImages)}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => setCurrentImageIndex(prev => (prev + 1) % totalImages)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-black/30 hover:bg-black/50 text-white rounded-full transition"
+                  >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </>
+              )}
             </div>
 
             {/* Carousel Indicators */}
-            <div className="flex justify-center gap-3 py-6 px-6 bg-white/50">
-              {[0, 1, 2, 3].map((index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`transition-all ${
-                    currentImageIndex === index
-                      ? 'w-3 h-3 bg-[#df6327] rounded-full'
-                      : 'w-2 h-2 bg-gray-400 rounded-full opacity-60 hover:opacity-100'
-                  }`}
-                  aria-label={`Image ${index + 1}`}
-                />
-              ))}
-            </div>
+            {totalImages > 1 && (
+              <div className="flex justify-center gap-3 py-6 px-6 bg-white/50">
+                {Array.from({ length: totalImages }).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentImageIndex(index)}
+                    className={`transition-all ${
+                      currentImageIndex === index
+                        ? 'w-3 h-3 bg-[#df6327] rounded-full'
+                        : 'w-2 h-2 bg-gray-400 rounded-full opacity-60 hover:opacity-100'
+                    }`}
+                    aria-label={`Image ${index + 1}`}
+                  />
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Room Details & Booking Form */}

@@ -76,14 +76,11 @@ export default function ContactSection() {
         <div className="mt-12 md:mt-16 text-center border-t border-foreground/10 pt-8">
           <p className="text-foreground/70 font-sans mb-6 uppercase tracking-wide text-sm">Follow our journey</p>
           <div className="flex items-center justify-center gap-4">
-            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
+            <a href="https://www.instagram.com/seharboutiquestay/" target="_blank" rel="noopener noreferrer" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
               Instagram
             </a>
-            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
+            <a href="https://www.facebook.com/p/Sehar-Boutique-Stay-Gallery-61553047706399/" target="_blank" rel="noopener noreferrer" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
               Facebook
-            </a>
-            <a href="#" className="px-6 py-2 rounded-full bg-transparent text-[#df6327] transition-all duration-300 font-sans font-medium text-sm border-2 border-[#df6327] hover:bg-[#df6327]/10">
-              Twitter
             </a>
           </div>
         </div>
