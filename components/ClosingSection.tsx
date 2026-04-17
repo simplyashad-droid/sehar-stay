@@ -29,7 +29,7 @@ const ClosingSection: FC<ClosingSectionProps> = ({ onStartJourney }) => {
         </h2>
 
         <p className="text-lg md:text-xl text-white/90 font-sans leading-relaxed mb-8">
-          Every moment at SEHAR is designed to touch your heart and transform your spirit. 
+          Every moment at SEHAR is designed to touch your heart and transform your spirit. <br />
           Join us for an unforgettable journey in the heart of the Himalayas.
         </p>
 
