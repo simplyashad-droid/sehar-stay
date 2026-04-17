@@ -29,12 +29,7 @@ const experiences: readonly Experience[] = [
     description: "Witness breathtaking sunsets over snow-capped mountains",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5816.JPG-ncMlT8r6as528XyYnqzthfFljds03V.jpeg",
   },
-  {
-    id: "mountain-retreat",
-    title: "Mountain Retreat",
-    description: "Relax in scenic courtyards with panoramic valley views",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5919.JPG-o4a5a5aTxcvClxrBf3zY5zeSZqgeaw.jpeg",
-  },
+
   {
     id: "sacred-entrance",
     title: "Sacred Welcome",
@@ -95,15 +90,15 @@ const ExperiencesSection: FC = () => {
             <h2 className="font-serif text-4xl md:text-5xl font-bold">
               Bringing <span className="text-blue-600 italic">Magic</span> to your life
             </h2>
-            
+
             <blockquote className="text-lg md:text-xl font-sans leading-relaxed">
               "LIFE IS TOO MAGICAL NOT TO BE ENCHANTED BY IT"
             </blockquote>
-            
+
             <p className="text-white/90 font-sans">
               ~ Sehar family
             </p>
-            
+
             <p className="text-base md:text-lg font-sans leading-relaxed text-white/95">
               We can't stop raving about the magic of our house of Bliss. The only way to fully experience its magic is to spend a few days with us.
             </p>
@@ -116,7 +111,7 @@ const ExperiencesSection: FC = () => {
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 {/* Decorative frame background */}
                 <div className="absolute inset-0 bg-gradient-to-br from-white/30 via-white/10 to-transparent pointer-events-none z-10" />
-                
+
                 {/* Carousel */}
                 <div className="overflow-hidden">
                   <div
@@ -141,7 +136,7 @@ const ExperiencesSection: FC = () => {
                               e.currentTarget.style.background = '#4b5563'
                             }}
                           />
-                          
+
                           {/* Elegant overlay gradient */}
                           <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </div>
@@ -197,11 +192,10 @@ const ExperiencesSection: FC = () => {
                   <button
                     key={index}
                     onClick={() => setCurrentIndex(index)}
-                    className={`transition-all duration-300 rounded-full ${
-                      index === currentIndex 
-                        ? 'w-8 h-3 bg-[#df6327]' 
+                    className={`transition-all duration-300 rounded-full ${index === currentIndex
+                        ? 'w-8 h-3 bg-[#df6327]'
                         : 'w-3 h-3 bg-white/50 hover:bg-white/70'
-                    }`}
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
