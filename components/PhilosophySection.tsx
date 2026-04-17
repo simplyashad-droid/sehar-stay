@@ -34,7 +34,7 @@ const PhilosophySection: FC = () => {
         <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left Content */}
           <div className="text-white space-y-6">
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-balance">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight md:whitespace-nowrap">
               Bringing <span className="italic text-blue-900">Magic</span> to your life
             </h2>
 
