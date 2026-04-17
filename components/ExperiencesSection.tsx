@@ -95,7 +95,8 @@ const ExperiencesSection: FC = () => {
             </p>
 
             <p className="text-base md:text-lg font-sans leading-relaxed text-white/95">
-              We can't stop raving about the magic of our house of Bliss. The only way to fully experience its magic is to spend a few days with us.
+              We can't stop raving about the magic of our HOUSE OF BLISS.
+              <br /> The only way to fully experience its magic is to spend a few days with us.<br />
             </p>
           </div>
 
