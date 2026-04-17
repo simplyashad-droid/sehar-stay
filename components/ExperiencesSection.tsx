@@ -30,12 +30,7 @@ const experiences: readonly Experience[] = [
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/IMG_5816.JPG-ncMlT8r6as528XyYnqzthfFljds03V.jpeg",
   },
 
-  {
-    id: "sacred-entrance",
-    title: "Sacred Welcome",
-    description: "Enter through our vibrant, spiritually-designed gates",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/92700FCB-2677-4016-95C4-761958A3DE78.JPG-W9uh9JmtxC6Il66oimmXtdDfn687su.jpeg",
-  },
+
   {
     id: "colorful-rooms",
     title: "Colorful Interiors",
@@ -193,8 +188,8 @@ const ExperiencesSection: FC = () => {
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`transition-all duration-300 rounded-full ${index === currentIndex
-                        ? 'w-8 h-3 bg-[#df6327]'
-                        : 'w-3 h-3 bg-white/50 hover:bg-white/70'
+                      ? 'w-8 h-3 bg-[#df6327]'
+                      : 'w-3 h-3 bg-white/50 hover:bg-white/70'
                       }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
