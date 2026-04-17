@@ -19,16 +19,7 @@ export const philosophyCarouselImages = [
     url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-17%20at%2021.43.42-vugK3eF5pcps3QPFbWHcqsUzO4PgSw.png',
     alt: 'Snow-covered structures in winter landscape',
   },
-  {
-    id: 'boho-bedroom',
-    url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-17%20at%2021.42.43-e9CVN0zUHgNEqPyGWbnqWvenzkDJtd.png',
-    alt: 'Bohemian bedroom with mountain window view',
-  },
-  {
-    id: 'mountain-terrace',
-    url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-17%20at%2021.41.39.png-whUO6fdVswV1DjWnTG4HECHUAxgg2N.jpeg',
-    alt: 'Mountain terrace with prayer flags and seating',
-  },
+
   {
     id: 'library-nook',
     url: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202026-04-17%20at%2021.43.13.png-jukSbtLWq7UY4Cqt85xQO9we4veq4g.jpeg',
