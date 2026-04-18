@@ -75,14 +75,26 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
           amount: totalPrice,
           currency: 'INR',
           receipt: `booking_${room.id}_${Date.now()}`,
+          notes: {
+            roomName: room.roomName,
+            guestName: formData.name,
+            guestPhone: formData.phone,
+            checkInDate: formData.checkInDate,
+            numberOfNights: formData.numberOfNights,
+            numberOfGuests: formData.numberOfGuests,
+          },
         }),
       })
 
-      if (!response.ok) throw new Error('Failed to create order')
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.details || 'Failed to create order')
+      }
       return await response.json()
     } catch (error) {
-      console.error('Error creating order:', error)
-      alert('Failed to create payment order. Please try again.')
+      console.error('[v0] Error creating order:', error)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      alert(`Failed to create payment order: ${errorMessage}`)
       setIsProcessing(false)
       return null
     }
