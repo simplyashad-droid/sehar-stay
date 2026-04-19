@@ -19,6 +19,9 @@ export const metadata: Metadata = {
   description: 'Experience luxury and creativity at Sehar Stay. A boutique himalayan cottage with thoughtfully designed rooms and sacred experiences.',
   keywords: 'himalayan cottage, luxury retreat, boutique stay, gallery, experiences',
   authors: [{ name: 'Sehar Stays' }],
+  icons: {
+    icon: '/favicon.svg',
+  },
   openGraph: {
     title: 'Sehar Stay - Himalayan Cottage Retreat',
     description: 'Experience luxury and creativity at Sehar Stay.',

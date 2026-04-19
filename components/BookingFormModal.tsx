@@ -140,13 +140,21 @@ const BookingFormModal: FC<BookingFormModalProps> = ({ isOpen, onClose, rooms })
               razorpay_order_id: response.razorpay_order_id,
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_signature: response.razorpay_signature,
+              bookingDetails: {
+                roomName: selectedRoom.roomName,
+                guestName: formData.name,
+                guestPhone: formData.phone,
+                checkInDate: formData.checkInDate,
+                numberOfNights: formData.numberOfNights,
+                numberOfGuests: formData.numberOfGuests,
+              },
             }),
           })
 
           const verificationResult = await verifyResponse.json()
 
           if (verificationResult.success) {
-            alert('Payment successful! Your booking is confirmed.')
+            alert('Payment successful! Your booking is confirmed. A confirmation email has been sent.')
             console.log('Booking confirmed:', {
               ...formData,
               room: selectedRoom,
