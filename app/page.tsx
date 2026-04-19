@@ -66,7 +66,7 @@ const HomePage: FC = () => {
       description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
       roomName: "Nazar",
       gradient: "from-amber-200 via-amber-100 to-white",
-      basePrice: 4000,
+      basePrice: 1,
       maxGuests: 3,
     },
   ]
