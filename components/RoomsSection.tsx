@@ -104,7 +104,7 @@ const rooms: readonly Room[] = [
     description: "LUXURY ROOM WITH FOREST VIEW & ENSUITE",
     roomName: "Nazar",
     gradient: "from-amber-200 via-amber-100 to-white",
-    basePrice: 1,
+    basePrice: 4000,
     airbnbUrl: "https://www.airbnb.co.in/rooms/1431977842087362144",
     maxGuests: 3,
   },
