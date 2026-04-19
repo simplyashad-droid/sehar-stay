@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, type FC } from 'react'
+import { useState, useEffect, type FC } from 'react'
 
 interface Room {
   id: string
@@ -20,8 +20,15 @@ interface RoomBookingModalProps {
   onClose: () => void
 }
 
+declare global {
+  interface Window {
+    Razorpay: any
+  }
+}
+
 const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [isProcessing, setIsProcessing] = useState(false)
   const [formData, setFormData] = useState({
     checkInDate: '',
     numberOfNights: 1,
@@ -39,6 +46,17 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
   const pricePerNight = basePrice - discount
   const totalPrice = pricePerNight * formData.numberOfNights
 
+  // Load Razorpay script
+  useEffect(() => {
+    const script = document.createElement('script')
+    script.src = 'https://checkout.razorpay.com/v1/checkout.js'
+    script.async = true
+    document.body.appendChild(script)
+    return () => {
+      document.body.removeChild(script)
+    }
+  }, [])
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target
     setFormData({
@@ -47,10 +65,102 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
     })
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const createRazorpayOrder = async () => {
+    try {
+      setIsProcessing(true)
+      const response = await fetch('/api/razorpay/create-order', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          amount: totalPrice,
+          currency: 'INR',
+          receipt: `booking_${room.id}_${Date.now()}`,
+          notes: {
+            roomName: room.roomName,
+            guestName: formData.name,
+            guestPhone: formData.phone,
+            checkInDate: formData.checkInDate,
+            numberOfNights: formData.numberOfNights,
+            numberOfGuests: formData.numberOfGuests,
+          },
+        }),
+      })
+
+      if (!response.ok) {
+        const errorData = await response.json()
+        throw new Error(errorData.details || 'Failed to create order')
+      }
+      return await response.json()
+    } catch (error) {
+      console.error('[v0] Error creating order:', error)
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error'
+      alert(`Failed to create payment order: ${errorMessage}`)
+      setIsProcessing(false)
+      return null
+    }
+  }
+
+  const handlePayment = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle booking submission
-    console.log('Booking data:', formData)
+
+    if (!formData.termsAccepted) {
+      alert('Please accept terms and conditions')
+      return
+    }
+
+    const order = await createRazorpayOrder()
+    if (!order) return
+
+    const options = {
+      key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+      amount: order.amount,
+      currency: order.currency,
+      order_id: order.id,
+      name: 'Sehar Boutique Stay',
+      description: `Booking ${room.roomName} for ${formData.numberOfNights} night(s)`,
+      prefill: {
+        name: formData.name,
+        contact: formData.phone,
+      },
+      handler: async (response: any) => {
+        try {
+          // Verify payment on backend
+          const verifyResponse = await fetch('/api/razorpay/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              razorpay_order_id: response.razorpay_order_id,
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_signature: response.razorpay_signature,
+            }),
+          })
+
+          if (verifyResponse.ok) {
+            const verifyData = await verifyResponse.json()
+            alert(`Payment successful! Your booking reference: ${verifyData.paymentId}`)
+            onClose()
+          } else {
+            alert('Payment verification failed. Please contact support.')
+          }
+        } catch (error) {
+          console.error('Payment verification error:', error)
+          alert('Payment completed but verification failed. Please contact support.')
+        } finally {
+          setIsProcessing(false)
+        }
+      },
+      modal: {
+        ondismiss: () => {
+          setIsProcessing(false)
+        },
+      },
+      theme: {
+        color: '#df6327',
+      },
+    }
+
+    const razorpay = new window.Razorpay(options)
+    razorpay.open()
   }
 
   return (
@@ -156,7 +266,7 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
             </div>
 
             {/* Booking Form */}
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handlePayment} className="space-y-4">
               {/* Check-in Date */}
               <div>
                 <label className="block text-sm font-medium text-foreground mb-2">Check-in Date</label>
@@ -248,14 +358,14 @@ const RoomBookingModal: FC<RoomBookingModalProps> = ({ room, onClose }) => {
               {/* Submit Button */}
               <button
                 type="submit"
-                disabled={!formData.termsAccepted}
+                disabled={!formData.termsAccepted || isProcessing}
                 className="w-full py-3 mt-6 bg-[#df6327] text-white font-semibold rounded-full hover:bg-[#c55a1f] disabled:bg-gray-400 transition duration-300 text-lg"
               >
-                Book your Stay
+                {isProcessing ? 'Processing...' : 'Book your Stay'}
               </button>
             </form>
 
-            <p className="text-xs text-foreground/60 text-center mt-4">Payment details will be collected in the next step</p>
+            <p className="text-xs text-foreground/60 text-center mt-4">You will be redirected to a secure payment gateway</p>
           </div>
         </div>
       </div>
