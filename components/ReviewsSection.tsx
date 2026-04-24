@@ -1,8 +1,11 @@
 'use client'
 
+import { useState } from 'react'
 import { Star } from 'lucide-react'
 
 const ReviewsSection = () => {
+  const [expandedReviews, setExpandedReviews] = useState<number[]>([])
+
   const reviews = [
     {
       id: 1,
@@ -14,11 +17,6 @@ const ReviewsSection = () => {
       text: 'A beautiful, peaceful stay away from Manali\'s chaos, surrounded by mountains and forests. Erah\'s home was so calming. From delicious Lebanese food to meditation, sound baths, and forest mandala sessions—everything was special. Truly felt like home. Highly recommended. ✨',
       ratingBreakdown: { rooms: 5, service: 5, location: 5 },
       highlights: ['Great view', 'Quiet', 'Great value'],
-      images: [
-        'https://via.placeholder.com/120x120?text=Room+View',
-        'https://via.placeholder.com/120x120?text=Outdoor',
-        'https://via.placeholder.com/120x120?text=Forest',
-      ],
       bgColor: 'from-pink-50',
     },
     {
@@ -31,10 +29,6 @@ const ReviewsSection = () => {
       text: 'Sehar is one of those places that instantly makes you feel calm. The hosts, Erha and Ramji, are warm, thoughtful and make you feel genuinely cared for. They have made this place with so much heart space and love. The rooms are beautiful and very well decorated. Every corner feels thoughtfully done gives you cozy and homely vibe. Highly recommended.',
       ratingBreakdown: { rooms: 5, service: 5, location: 5 },
       highlights: ['Luxury', 'Great view', 'Romantic', 'Quiet', 'Great value', 'High-tech'],
-      images: [
-        'https://via.placeholder.com/120x120?text=Decor',
-        'https://via.placeholder.com/120x120?text=Fireplace',
-      ],
       bgColor: 'from-blue-50',
     },
     {
@@ -47,23 +41,35 @@ const ReviewsSection = () => {
       text: 'I\'m a friend of Erah\'s and had the opportunity to stay at her place as a guest. What a transformation! Every corner has something she has literally created herself, down to the tiniest details. The most tastiest, authentic Lebanese food, all made with so much love. If I had to describe her place in one word - Abundance! Erah is the best host.',
       ratingBreakdown: { rooms: 5, service: 5, location: 5 },
       highlights: ['Quiet'],
-      images: [
-        'https://via.placeholder.com/120x120?text=Seating',
-        'https://via.placeholder.com/120x120?text=Food',
-        'https://via.placeholder.com/120x120?text=Forest+Walk',
-        'https://via.placeholder.com/120x120?text=Interior',
-      ],
       bgColor: 'from-purple-50',
     },
   ]
 
+  const toggleExpanded = (id: number) => {
+    setExpandedReviews(prev =>
+      prev.includes(id) ? prev.filter(rid => rid !== id) : [...prev, id]
+    )
+  }
+
+  const isExpanded = (id: number) => expandedReviews.includes(id)
+
   return (
     <section className="py-16 md:py-24 px-4 md:px-8 bg-background">
       <div className="max-w-6xl mx-auto">
-        {/* Section Header */}
+        {/* Section Header with Rating */}
         <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">Guest Reviews</h2>
-          <p className="text-lg text-foreground/70">Hear what our guests have to say about their stay</p>
+          <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-2">Guest Reviews</h2>
+          <div className="flex items-center justify-center gap-6 mt-6">
+            <div>
+              <p className="text-sm text-foreground/60 mb-1">Overall Rating</p>
+              <p className="text-4xl font-bold text-[#df6327]">5.0</p>
+            </div>
+            <div className="w-px h-16 bg-foreground/20" />
+            <div>
+              <p className="text-sm text-foreground/60 mb-1">Total Reviews</p>
+              <p className="text-4xl font-bold text-foreground">23</p>
+            </div>
+          </div>
         </div>
 
         {/* Reviews Grid */}
@@ -96,7 +102,15 @@ const ReviewsSection = () => {
 
               {/* Review Content */}
               <div className="px-6 py-4">
-                <p className="text-sm text-foreground/80 leading-relaxed line-clamp-5">{review.text}</p>
+                <p className={`text-sm text-foreground/80 leading-relaxed ${!isExpanded(review.id) ? 'line-clamp-4' : ''}`}>
+                  {review.text}
+                </p>
+                <button
+                  onClick={() => toggleExpanded(review.id)}
+                  className="text-xs font-semibold text-[#df6327] hover:text-[#c55a1f] mt-2 transition-colors"
+                >
+                  {isExpanded(review.id) ? 'See less' : 'See more'}
+                </button>
               </div>
 
               {/* Ratings Breakdown */}
@@ -127,22 +141,6 @@ const ReviewsSection = () => {
                       </span>
                     ))}
                   </div>
-                </div>
-              )}
-
-              {/* Images Carousel */}
-              {review.images.length > 0 && (
-                <div className="p-4 bg-white/30 border-t border-foreground/10">
-                  <div className="grid grid-cols-3 gap-2">
-                    {review.images.slice(0, 3).map((_, idx) => (
-                      <div key={idx} className="aspect-square rounded-lg overflow-hidden bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-                        <div className="w-8 h-8 rounded-full bg-white/30" />
-                      </div>
-                    ))}
-                  </div>
-                  {review.images.length > 3 && (
-                    <p className="text-xs text-foreground/60 mt-2 text-center">+{review.images.length - 3} more</p>
-                  )}
                 </div>
               )}
             </div>
