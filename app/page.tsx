@@ -11,6 +11,7 @@ import ExperiencesSection from "@/components/ExperiencesSection"
 import SacredExperiencesSection from "@/components/SacredExperiencesSection"
 import ClosingSection from "@/components/ClosingSection"
 import ContactSection from "@/components/ContactSection"
+import ReviewsSection from "@/components/ReviewsSection"
 import BookingFormModal from "@/components/BookingFormModal"
 
 const HomePage: FC = () => {
@@ -117,6 +118,7 @@ const HomePage: FC = () => {
         <ExperiencesSection />
         <RoomsSection />
         <SacredExperiencesSection />
+        <ReviewsSection />
         <ClosingSection onStartJourney={() => setIsBookingModalOpen(true)} />
         <ContactSection />
       </main>
